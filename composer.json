@@ -1,0 +1,24 @@
+{
+    "name": "zeropingheroes/lanager-core",
+    "description": "Core files for the LANager LAN party management web app",
+    "license": "AGPL-3.0",
+    "authors": [
+        {
+            "name": "Olly Baker",
+            "email": "ilumos@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Zeropingheroes\\LanagerCore\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
