@@ -28,7 +28,17 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['LanagerCore'] = $this->app->share(function($app)
+		{
+			return new LanagerCore;
+		});
+
+		$this->app->booting(function()
+		{
+			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+			$loader->alias('LanagerCore', 'Zeropingheroes\LanagerCore\Facades\LanagerCore');
+		});
+
 	}
 
 	/**
