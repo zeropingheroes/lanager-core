@@ -19,6 +19,8 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('zeropingheroes/lanager-core');
+
+		include __DIR__.'/../../routes.php';
 	}
 
 	/**

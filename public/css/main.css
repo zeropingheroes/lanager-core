@@ -1,0 +1,228 @@
+
+
+/* ==========================================================================
+	 Author's custom styles
+	 ========================================================================== */
+
+body {
+	  background-color: #000000;
+  background-image: url('/packages/zeropingheroes/lanager-core/img/bg-html.jpg');
+}
+
+a {
+	color: #19A601;
+}
+
+a:hover {
+	color: #2AE208;
+}
+
+
+.dotted-underline, .dotted-underline:hover {
+	text-decoration: none;
+	color: #fff;
+	border-bottom: 1px dotted #777;
+}
+
+
+.steam-signin {
+	margin-top: 7px;
+}
+
+.brand {
+	padding-right: 3px !important;
+	padding-top: 3px !important;
+	padding-bottom: 2px !important;
+}
+
+
+/* dropdown styles */
+.dropdown {
+	list-style: none;
+}
+
+.dropdown a {
+	color: #999;
+}
+
+.navbar .dropdown-menu:after {
+	display: none !important;
+}
+
+ul.dropdown-menu {
+	background-color: #111;
+	margin-top: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.dropdown-menu li > a {
+	color: #999; /* make unhighlighted links easier to see */
+}
+
+.user-menu {
+	padding: 4px !important; /* fix size of user menu due to avatar size */
+}
+
+.user-menu .caret {
+	margin-top: 14px !important; /* fix caret position for user menu */
+}
+
+.collapse a:hover,
+.collapse a:focus, {
+	color: #fff !important;
+}
+
+
+/* dropdown menu link fading */
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+	color: #fff !important;
+	text-decoration: none;
+	background-color: #21C404;
+	background-image: -moz-linear-gradient(top, #2AE208, #19A601);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2AE208), to(#19A601));
+	background-image: -webkit-linear-gradient(top, #2AE208, #19A601);
+	background-image: -o-linear-gradient(top, #2AE208, #19A601);
+	background-image: linear-gradient(to bottom, #2AE208, #19A601);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2AE208', endColorstr='#ff19A601', GradientType=0);
+}
+
+
+input, textarea {
+	width: 500px;
+}
+
+select {
+	width: 514px;
+}
+
+.pagination li a {
+	background-color: black !important;
+	border: 1px solid #444 !important;
+}
+
+
+/* User Profile */
+.profile_header {
+	position: relative;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #222;
+}
+.profile_avatar {
+	vertical-align: bottom;
+}
+
+.profile_username {
+	font-size: 200%;
+}
+
+ul.profile_tools {
+	text-align: right;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	list-style: none;
+}
+
+
+/* games page */
+.game_user_count {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 170%;
+}
+
+.game_name {
+	padding-right: 20px;
+}
+
+
+
+/* playlist display page */
+
+input#playlist_entry_url {
+	width: 500px;
+}
+
+table#playlist {
+	width: 100%;
+}
+table#playlist tr.entry_now_playing {
+	font-weight: bold;
+}
+td.playlist_entry_user {
+	width: 5%;
+}
+td.playlist_entry_duration {
+	width: 9%;
+}
+td.playlist_entry_title {
+	word-wrap: break-word;
+}
+td.playlist_entry_controls {
+	width: 135px;
+	text-align: right;
+}
+
+
+/* playlist playout screen */
+div#now_playing {
+	font-size: 160%;
+	margin-bottom: 15px;
+}
+
+
+/* event timetable */
+table#timetable {
+	width: 100%;
+}
+table#timetable th {
+	padding-right: 8px;
+	text-align: right;
+	width: 5%;
+	position: relative;
+	top: -11px;
+}
+
+table#timetable th.day {
+	color: red;
+}
+
+table#timetable td.day {
+	border-top: 1px solid red;
+}
+
+table#timetable td {
+	border-top: 1px solid #444;
+}
+
+
+table#timetable td.event_name {
+	text-align: center;
+	width: 25%;  
+	font-weight: bold;
+	font-size: large;
+}
+
+
+table#timetable td.event_name, table#timetable td.event_description {
+	background-color:rgba(0,255,0,0.1);
+}
+
+table#timetable td.current {
+	background-color:rgba(0,255,0,0.2);
+}
+
+
+/* event create */
+div.bootstrap-datetimepicker-widget {
+	color: #000;
+}
+
+div#start_datetimepicker input, div#end_datetimepicker input {
+	width: 216px;
+}
