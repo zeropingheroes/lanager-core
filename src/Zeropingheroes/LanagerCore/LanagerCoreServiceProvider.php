@@ -20,6 +20,8 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 	{
 		$this->package('zeropingheroes/lanager-core');
 
+		$this->app->register('VTalbot\Markdown\MarkdownServiceProvider');
+
 		include __DIR__.'/../../routes.php';
 	}
 
@@ -39,6 +41,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 			$loader->alias('LanagerCore', 'Zeropingheroes\LanagerCore\Facades\LanagerCore');
+			$loader->alias('Markdown', 'VTalbot\Markdown\Facades\Markdown');
 		});
 
 	}

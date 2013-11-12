@@ -11,7 +11,28 @@
 |
 */
 
+
+
+Route::resource('info', 'Zeropingheroes\LanagerCore\InfoPageController');
+
+
 Route::get('/', function()
 {
-	return View::make('lanager-core::info/display', array('title' => 'test', 'info' => 'test'));
+	return Redirect::to('info');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| View Composers
+|--------------------------------------------------------------------------
+*/
+
+View::composer('lanager-core::layouts.default.info', function($view)
+{
+    $infoPagesMenuItems = Zeropingheroes\LanagerCore\Models\InfoPage::whereNull('parent_id')->get();
+
+    $view->with('infoPages', $infoPagesMenuItems);
+
 });

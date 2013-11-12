@@ -16,9 +16,7 @@
 
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li>
-						<a href="/">Test</a>
-					</li>
+					@include('lanager-core::layouts.default.info')
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
