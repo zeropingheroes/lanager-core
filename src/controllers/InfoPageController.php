@@ -81,7 +81,7 @@ class InfoPageController extends BaseController {
 		$infoPage = InfoPage::find($id);
 		$infoPagesDropdown = array('' => '') + InfoPage::lists('title','id');
 		return View::make('lanager-core::infoPage.edit')
-					->with('title','Create Info Page')
+					->with('title','Edit Info Page')
 					->with('infoPagesDropdown',$infoPagesDropdown)
 					->with('infoPage',$infoPage);
 
