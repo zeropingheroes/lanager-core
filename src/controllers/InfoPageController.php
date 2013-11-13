@@ -28,7 +28,7 @@ class InfoPageController extends BaseController {
 	 */
 	public function create()
 	{
-		$infoPagesDropdown = array('' => '') + InfoPage::lists('title','id');
+		$infoPagesDropdown = array('' => ' ') + InfoPage::lists('title','id');
 		$infoPage = new InfoPage;
 		return View::make('lanager-core::infoPage.create')
 					->with('title','Create Info Page')
@@ -48,7 +48,11 @@ class InfoPageController extends BaseController {
 		$infoPage->title = Input::get('title');
 		$infoPage->content = Input::get('content');
 		$infoPage->parent_id = (is_numeric(Input::get('parent_id')) ? Input::get('parent_id') : NULL); // turn non-numeric & empty values into NULL
-		$infoPage->save();
+		
+		if(!$infoPage->save())
+		{
+			return Redirect::route('info.create')->withErrors($infoPage->errors());
+		}
 
 		return Redirect::route('info.show',array('info' => $infoPage->id));
 	}
@@ -79,7 +83,7 @@ class InfoPageController extends BaseController {
 	public function edit($id)
 	{
 		$infoPage = InfoPage::find($id);
-		$infoPagesDropdown = array('' => '') + InfoPage::lists('title','id');
+		$infoPagesDropdown = array('' => ' ') + InfoPage::lists('title','id');
 		return View::make('lanager-core::infoPage.edit')
 					->with('title','Edit Info Page')
 					->with('infoPagesDropdown',$infoPagesDropdown)
@@ -99,7 +103,12 @@ class InfoPageController extends BaseController {
 		$infoPage->title = Input::get('title');
 		$infoPage->content = Input::get('content');
 		$infoPage->parent_id = (is_numeric(Input::get('parent_id')) ? Input::get('parent_id') : NULL); // turn non-numeric & empty values into NULL
-		$infoPage->save();
+		
+		if(!$infoPage->save())
+		{
+			return Redirect::route('info.edit',array('info' => $infoPage->id))->withErrors($infoPage->errors());
+		}
+
 		return Redirect::route('info.show',array('info' => $infoPage->id));
 
 	}

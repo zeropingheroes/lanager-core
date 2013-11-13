@@ -11,7 +11,8 @@
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.0.*",
-        "vtalbot/markdown": "1.*"
+        "vtalbot/markdown": "1.*",
+        "laravelbook/ardent": "dev-master"
     },
     "autoload": {
         "classmap": [

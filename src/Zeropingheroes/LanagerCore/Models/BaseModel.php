@@ -1,9 +1,9 @@
 <?php
 namespace Zeropingheroes\LanagerCore\Models;
 
-use \Illuminate\Database\Eloquent\Model;
+use LaravelBook\Ardent\Ardent;
 
-class BaseModel extends Model
+class BaseModel extends Ardent
 {
     //
 }
