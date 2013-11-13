@@ -5,8 +5,10 @@
 	 ========================================================================== */
 
 body {
-	  background-color: #000000;
-  background-image: url('/packages/zeropingheroes/lanager-core/img/bg-html.jpg');
+	background-color: #000000;
+	background-image: url('/packages/zeropingheroes/lanager-core/img/bg-html.jpg');
+	padding-top: 60px;
+	padding-bottom: 40px;
 }
 
 a {
