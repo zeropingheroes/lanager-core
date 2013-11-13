@@ -15,7 +15,7 @@
 
 <br>
 
-{{ Form::open(array('route' => array('info.destroy', $infoPage->id), 'method' => 'DELETE')) }}
+{{ Form::open(array('route' => array('info.destroy', $infoPage->id), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?')) }}
 {{ link_to_route('info.edit', 'Edit',array('info' => $infoPage->id), array('class' => 'btn')) }}
 
 {{ Form::submit('Delete',array('class' => 'btn btn-danger')) }}

@@ -17,6 +17,7 @@
 		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/jquery/jquery-1.8.3.min.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/modernizr/modernizr-2.6.2-respond-1.1.0.min.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/twitter/bootstrap/bootstrap.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/rails/jquery-ujs/rails.js') }}
 
 		<script type="text/javascript">
 			var siteUrl = '{{ url('/') }}';
