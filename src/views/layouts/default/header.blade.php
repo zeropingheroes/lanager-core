@@ -10,14 +10,13 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
 
-		{{ HTML::style('packages/zeropingheroes/lanager-core/css/vendor/twitter/bootstrap/bootstrap.css') }}
-		{{ HTML::style('packages/zeropingheroes/lanager-core/css/vendor/twitter/bootstrap/bootstrap-responsive.css') }}
-		{{ HTML::style('packages/zeropingheroes/lanager-core/css/main.css') }}
+		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap.css') }}
+		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap-responsive.css') }}
+		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/zeropingheroes/lanager/css/lanager.css') }}
 
-		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/jquery/jquery-1.8.3.min.js') }}
-		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/modernizr/modernizr-2.6.2-respond-1.1.0.min.js') }}
-		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/twitter/bootstrap/bootstrap.js') }}
-		{{ HTML::script('packages/zeropingheroes/lanager-core/js/vendor/rails/jquery-ujs/rails.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/jquery/jquery-1.8.3.min.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/js/bootstrap.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/rails/jquery-ujs/rails.js') }}
 
 		<script type="text/javascript">
 			var siteUrl = '{{ url('/') }}';

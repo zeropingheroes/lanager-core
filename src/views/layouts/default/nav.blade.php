@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="/"><img src="{{ asset('/packages/zeropingheroes/lanager-core/img/logo.png') }}" alt="LANager Logo"></a>
+			<a class="brand" href="/"><img src="{{ asset('/packages/zeropingheroes/lanager-core/vendor/zeropingheroes/lanager/img/logo.png') }}" alt="LANager Logo"></a>
 
 			<div class="nav-collapse collapse">
 				<ul class="nav">

@@ -1,0 +1,92 @@
+/* -------------------------------------------------------------------
+   GENERAL
+   -------------------------------------------------------------------
+*/
+
+/* dark theme */
+body {
+	background-color: #000000;
+	color: #fff;
+	background-image: url('../img/bg-html.jpg');
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+/* green links */
+a {
+	color: #19A601;
+}
+
+/* green links */
+a:hover {
+	color: #2AE208;
+}
+
+/* dark hr with small margin */
+hr {
+	border-color: #333;
+	border-top: none;
+	margin-top: 25px;
+	margin-bottom: 5px;
+}
+
+/* -------------------------------------------------------------------
+   NAVBAR
+   -------------------------------------------------------------------
+*/
+
+ /* snug logo in navbar */
+.navbar a.brand {
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 0px;
+}
+
+/* dropdown triangle hidden */
+.navbar .nav > li > .dropdown-menu:after { 
+	display: none;
+}
+
+/* dark dropdown */
+ul.dropdown-menu {
+	background-color: #111;
+	margin-top: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/* brighter (un-hovered) dropdown links */
+.dropdown-menu li > a {
+	color: #999; 
+}
+
+/* green gradient dropdown links */
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+	color: #fff !important;
+	text-decoration: none;
+	background-color: #21C404;
+	background-image: -moz-linear-gradient(top, #2AE208, #19A601);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2AE208), to(#19A601));
+	background-image: -webkit-linear-gradient(top, #2AE208, #19A601);
+	background-image: -o-linear-gradient(top, #2AE208, #19A601);
+	background-image: linear-gradient(to bottom, #2AE208, #19A601);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2AE208', endColorstr='#ff19A601', GradientType=0);
+}
+
+/* -------------------------------------------------------------------
+   FORMS
+   -------------------------------------------------------------------
+*/
+
+/* wide inputs */
+input, textarea, select {
+	width: 50%;
+}
+
+/* alerts to match input width */
+.alert {
+	width: 50%;	
+}
