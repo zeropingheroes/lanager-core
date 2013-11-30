@@ -25,6 +25,8 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../composers.php';
+		include __DIR__.'/../../macros.php';
+
 	}
 
 	/**
@@ -43,7 +45,6 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 			$loader->alias('LanagerCore'   ,'Zeropingheroes\LanagerCore\Facades\LanagerCore');
-			$loader->alias('Markdown'      ,'VTalbot\Markdown\Facades\Markdown');
 			$loader->alias('Markdown'      ,'VTalbot\Markdown\Facades\Markdown');
 			$loader->alias('Alert'         ,'Bootstrapper\Alert');
 			$loader->alias('Badge'         ,'Bootstrapper\Badge');

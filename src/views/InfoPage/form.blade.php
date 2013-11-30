@@ -1,11 +1,4 @@
-@if( $errors->count() > 0 )
-	{{ Alert::error(
-		'<strong>The following errors occurred</strong>
-		<ul>
-		'.implode($errors->all('<li>:message</li>')).'
-		</ul>')
-	}}
-@endif
+{{ HTML::validationErrors($errors) }}
 
 {{ Form::label('title', 'Title') }}
 {{ Form::text('title',NULL,array('placeholder' => 'The title of the page', 'maxlength' => 255)) }}
