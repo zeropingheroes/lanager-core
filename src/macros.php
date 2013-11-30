@@ -15,10 +15,8 @@ HTML::macro('validationErrors', function($errors)
 	if( $errors->count() > 0 )
 	{
 		return Alert::error(
-			'<strong>The following errors occurred</strong>
-			<ul>
-				'.implode($errors->all('<li>:message</li>')).'
-			</ul>'
+			'<strong>The following errors occurred</strong>'.
+			HTML::ul($errors->all(':message'))
 		);
 	}
 });
