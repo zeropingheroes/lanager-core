@@ -24,6 +24,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->register('Bootstrapper\BootstrapperServiceProvider');
 
 		include __DIR__.'/../../routes.php';
+		include __DIR__.'/../../composers.php';
 	}
 
 	/**
