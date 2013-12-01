@@ -14,7 +14,8 @@
         "vtalbot/markdown": "1.*",
         "laravelbook/ardent": "dev-master",
         "patricktalmadge/bootstrapper": "dev-develop",
-        "tsukanov/steam-locomotive": "dev-master"
+        "tsukanov/steam-locomotive": "dev-master",
+        "lightopenid/lightopenid": "dev-master"
     },
     "autoload": {
         "classmap": [

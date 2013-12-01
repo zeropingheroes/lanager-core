@@ -42,7 +42,7 @@ hr {
 	padding-bottom: 0px;
 }
 
-/* dropdown triangle hidden */
+/* dropdown 2nd triangle hidden */
 .navbar .nav > li > .dropdown-menu:after { 
 	display: none;
 }
@@ -74,6 +74,24 @@ ul.dropdown-menu {
 	background-image: linear-gradient(to bottom, #2AE208, #19A601);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2AE208', endColorstr='#ff19A601', GradientType=0);
+}
+
+/* correct steam sign in link position */
+.navbar .nav .steam-signin {
+	padding-right: 0px;
+}
+.navbar .nav .steam-signin img {
+	vertical-align: middle;
+}
+
+/* snug logged in user menu in navbar */
+.navbar .nav .user-menu {
+	padding: 4px;
+}
+
+/* correct caret position */
+.navbar .nav .user-menu .caret {
+	margin-top: 14px;
 }
 
 /* -------------------------------------------------------------------

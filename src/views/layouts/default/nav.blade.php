@@ -12,6 +12,21 @@
 				<ul class="nav">
 					@include('lanager-core::layouts.default.info')
 				</ul>
+				<ul class="nav pull-right">
+					@if(Auth::check())
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown"><img src="{{ Auth::user()->avatar }}" alt="Avatar"> {{{ (Auth::user()->username) }}} <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ route('user.show', Auth::user()->id) }}">Profile</a></li>
+								<li><a href="{{ route('user.logout') }}">Log Out</a></li>
+							</ul>
+						</li>
+					@else
+						<li>
+							<a href="{{ $authUrl }}" class="pull-right steam-signin"><img src="{{ asset('/packages/zeropingheroes/lanager-core/vendor/zeropingheroes/lanager/img/sits_small.png') }}"></a>
+						</li>
+					@endif
+				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 <?php namespace Zeropingheroes\LanagerCore;
 
 use Illuminate\Support\ServiceProvider;
+use Config;
 
 class LanagerCoreServiceProvider extends ServiceProvider {
 
@@ -23,9 +24,13 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->register('VTalbot\Markdown\MarkdownServiceProvider');
 		$this->app->register('Bootstrapper\BootstrapperServiceProvider');
 
+		$this->app['config']['auth'] =  Config::get('lanager-core::auth');
+		$this->app['config']['session'] =  Config::get('lanager-core::session');
+
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../composers.php';
 		include __DIR__.'/../../macros.php';
+		include __DIR__.'/../../bindings.php';
 
 	}
 
