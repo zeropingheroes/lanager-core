@@ -13,7 +13,8 @@
         "illuminate/support": "4.0.*",
         "vtalbot/markdown": "1.*",
         "laravelbook/ardent": "dev-master",
-        "patricktalmadge/bootstrapper": "dev-develop"
+        "patricktalmadge/bootstrapper": "dev-develop",
+        "tsukanov/steam-locomotive": "dev-master"
     },
     "autoload": {
         "classmap": [
