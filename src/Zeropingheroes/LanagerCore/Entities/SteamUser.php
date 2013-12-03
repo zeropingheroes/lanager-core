@@ -30,4 +30,67 @@ class SteamUser {
 	public $location_country_code;
 	public $location_state_code;
 
+	/**
+	 * Get the URL for the user's medium avatar.
+	 *
+	 * @return string
+	 */
+	public function getMediumAvatarUrl()
+	{
+		return str_replace('.jpg', '_medium.jpg', $this->avatar_url);
+	}
+
+	/**
+	 * Get the URL for the user's large avatar.
+	 *
+	 * @return string
+	 */
+	public function getLargeAvatarUrl()
+	{
+		return str_replace('.jpg', '_full.jpg', $this->avatar_url);
+	}
+
+	/**
+	 * Translate the user's status number to English
+	 *
+	 * @return string
+	 */
+	public function getStatus()
+	{
+		switch ($this->status)
+		{
+			case '1':
+				return 'Online';
+			case '2':
+				return 'Busy';
+			case '3':
+				return 'Away';
+			case '4':
+				return 'Snooze';
+			case '5':
+				return 'Looking to trade';
+			case '6':
+				return 'Looking to play';
+			case '0':
+			default:
+			return 'Offline'; // TODO: Return e.g. "last online 15 minutes ago"
+		}
+	}
+
+	// TODO: Move to Steam Browser Protocol package
+	public function getAddFriendLink()
+	{
+		return 'steam://friends/add/'.$this->id;
+	}
+
+	public function getSendMessageLink()
+	{
+		return 'steam://friends/joinchat/'.$this->id;
+	}
+
+	public function getCommunityProfileLink()
+	{
+		return 'http://www.steamcommunity.com/profiles/'.$this->id;
+	}
+
 }

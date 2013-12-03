@@ -39,24 +39,4 @@ class User extends BaseModel implements UserInterface {
 		return $this->password;
 	}
 
-	/**
-	 * Get the URL for the user's medium avatar.
-	 *
-	 * @return string
-	 */
-	public function getMediumAvatarUrl()
-	{
-		return str_replace('.jpg', '_medium.jpg', $this->avatar);
-	}
-
-	/**
-	 * Get the URL for the user's large avatar.
-	 *
-	 * @return string
-	 */
-	public function getLargeAvatarUrl()
-	{
-		return str_replace('.jpg', '_large.jpg', $this->avatar);
-	}
-
 }

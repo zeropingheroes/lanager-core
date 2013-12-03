@@ -3,7 +3,7 @@
 use Zeropingheroes\LanagerCore\Models\User,
 	Zeropingheroes\LanagerCore\Repositories\SteamUserRepositoryInterface;
 use \LightOpenID;
-use App, Auth, Input, Request, Redirect;
+use App, Auth, Input, Request, Redirect, View;
 
 class UserController extends BaseController {
 
@@ -54,7 +54,19 @@ class UserController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		if( $user = User::find($id) )
+		{
+			$steamUser = $this->steamUsers->getUser($user->steam_id_64);		
+
+			return View::make('lanager-core::user.show')
+						->with('title',$user->username)
+						->with('user',$user)
+						->with('steamUser', $steamUser);
+		}
+		else
+		{
+			App::abort(404, 'Page not found');
+		}
 	}
 
 	/**
