@@ -23,6 +23,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 
 		$this->app->register('VTalbot\Markdown\MarkdownServiceProvider');
 		$this->app->register('Bootstrapper\BootstrapperServiceProvider');
+		$this->app->register('Zeropingheroes\SteamBrowserProtocol\SteamBrowserProtocolServiceProvider');
 
 		$this->app['config']['auth'] =  Config::get('lanager-core::auth');
 		$this->app['config']['session'] =  Config::get('lanager-core::session');
@@ -49,31 +50,32 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('LanagerCore'   ,'Zeropingheroes\LanagerCore\Facades\LanagerCore');
-			$loader->alias('Markdown'      ,'VTalbot\Markdown\Facades\Markdown');
-			$loader->alias('Alert'         ,'Bootstrapper\Alert');
-			$loader->alias('Badge'         ,'Bootstrapper\Badge');
-			$loader->alias('Breadcrumb'    ,'Bootstrapper\Breadcrumb');
-			$loader->alias('Button'        ,'Bootstrapper\Button');
-			$loader->alias('ButtonGroup'   ,'Bootstrapper\ButtonGroup');
-			$loader->alias('ButtonToolbar' ,'Bootstrapper\ButtonToolbar');
-			$loader->alias('Carousel'      ,'Bootstrapper\Carousel');
-			$loader->alias('DropdownButton','Bootstrapper\DropdownButton');
-			$loader->alias('Form'          ,'Bootstrapper\Form');
-			$loader->alias('Helpers'       ,'Bootstrapper\Helpers');
-			$loader->alias('Icon'          ,'Bootstrapper\Icon');
-			$loader->alias('Image'         ,'Bootstrapper\Image');
-			$loader->alias('Label'         ,'Bootstrapper\Label');
-			$loader->alias('MediaObject'   ,'Bootstrapper\MediaObject');
-			$loader->alias('Navbar'        ,'Bootstrapper\Navbar');
-			$loader->alias('Navigation'    ,'Bootstrapper\Navigation');
-			$loader->alias('Paginator'     ,'Bootstrapper\Paginator');
-			$loader->alias('Progress'      ,'Bootstrapper\Progress');
-			$loader->alias('Tabbable'      ,'Bootstrapper\Tabbable');
-			$loader->alias('Table'         ,'Bootstrapper\Table');
-			$loader->alias('Thumbnail'     ,'Bootstrapper\Thumbnail');
-			$loader->alias('Typeahead'     ,'Bootstrapper\Typeahead');
-			$loader->alias('Typography'    ,'Bootstrapper\Typography');
+			$loader->alias('LanagerCore'			,'Zeropingheroes\LanagerCore\Facades\LanagerCore');
+			$loader->alias('SteamBrowserProtocol'   ,'Zeropingheroes\SteamBrowserProtocol\Facades\SteamBrowserProtocol');
+			$loader->alias('Markdown'				,'VTalbot\Markdown\Facades\Markdown');
+			$loader->alias('Alert'					,'Bootstrapper\Alert');
+			$loader->alias('Badge'					,'Bootstrapper\Badge');
+			$loader->alias('Breadcrumb'				,'Bootstrapper\Breadcrumb');
+			$loader->alias('Button'					,'Bootstrapper\Button');
+			$loader->alias('ButtonGroup'			,'Bootstrapper\ButtonGroup');
+			$loader->alias('ButtonToolbar'			,'Bootstrapper\ButtonToolbar');
+			$loader->alias('Carousel'				,'Bootstrapper\Carousel');
+			$loader->alias('DropdownButton'			,'Bootstrapper\DropdownButton');
+			$loader->alias('Form'					,'Bootstrapper\Form');
+			$loader->alias('Helpers'				,'Bootstrapper\Helpers');
+			$loader->alias('Icon'					,'Bootstrapper\Icon');
+			$loader->alias('Image'					,'Bootstrapper\Image');
+			$loader->alias('Label'					,'Bootstrapper\Label');
+			$loader->alias('MediaObject'			,'Bootstrapper\MediaObject');
+			$loader->alias('Navbar'					,'Bootstrapper\Navbar');
+			$loader->alias('Navigation'				,'Bootstrapper\Navigation');
+			$loader->alias('Paginator'				,'Bootstrapper\Paginator');
+			$loader->alias('Progress'				,'Bootstrapper\Progress');
+			$loader->alias('Tabbable'				,'Bootstrapper\Tabbable');
+			$loader->alias('Table'					,'Bootstrapper\Table');
+			$loader->alias('Thumbnail'				,'Bootstrapper\Thumbnail');
+			$loader->alias('Typeahead'				,'Bootstrapper\Typeahead');
+			$loader->alias('Typography'				,'Bootstrapper\Typography');
 		});
 
 	}

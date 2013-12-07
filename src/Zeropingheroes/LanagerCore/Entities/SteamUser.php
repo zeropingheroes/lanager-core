@@ -77,20 +77,4 @@ class SteamUser {
 		}
 	}
 
-	// TODO: Move to Steam Browser Protocol package
-	public function getAddFriendLink()
-	{
-		return 'steam://friends/add/'.$this->id;
-	}
-
-	public function getSendMessageLink()
-	{
-		return 'steam://friends/joinchat/'.$this->id;
-	}
-
-	public function getCommunityProfileLink()
-	{
-		return 'http://www.steamcommunity.com/profiles/'.$this->id;
-	}
-
 }

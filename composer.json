@@ -15,7 +15,8 @@
         "laravelbook/ardent": "dev-master",
         "patricktalmadge/bootstrapper": "dev-develop",
         "tsukanov/steam-locomotive": "dev-master",
-        "lightopenid/lightopenid": "dev-master"
+        "lightopenid/lightopenid": "dev-master",
+        "zeropingheroes/steam-browser-protocol": "dev-dev"
     },
     "autoload": {
         "classmap": [
