@@ -25,9 +25,6 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->register('Bootstrapper\BootstrapperServiceProvider');
 		$this->app->register('Zeropingheroes\SteamBrowserProtocol\SteamBrowserProtocolServiceProvider');
 
-		$this->app['config']['auth'] =  Config::get('lanager-core::auth');
-		$this->app['config']['session'] =  Config::get('lanager-core::session');
-
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../composers.php';
 		include __DIR__.'/../../macros.php';
