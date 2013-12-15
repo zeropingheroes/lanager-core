@@ -3,7 +3,8 @@ namespace Zeropingheroes\LanagerCore\Models;
 
 use Illuminate\Auth\UserInterface;
 
-class User extends BaseModel implements UserInterface {
+class User extends BaseModel implements UserInterface
+{
 
 	/**
 	 * The database table used by the model.
@@ -37,6 +38,28 @@ class User extends BaseModel implements UserInterface {
 	public function getAuthPassword()
 	{
 		return $this->password;
+	}
+
+	public function roles()
+	{
+		return $this->belongsToMany('Zeropingheroes\LanagerCore\Models\Role');
+	}
+
+	public function permissions()
+	{
+		return $this->hasMany('Zeropingheroes\LanagerCore\Models\Permission');
+	}
+
+	public function hasRole($key) 
+	{
+		foreach($this->roles as $role)
+		{
+			if($role->name === $key)
+			{
+			return true;
+			}
+		}
+		return false;
 	}
 
 }

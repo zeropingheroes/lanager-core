@@ -26,13 +26,13 @@ Route::resource('user', 'Zeropingheroes\LanagerCore\UserController');
 
 
 
-// Info
-Route::resource('info', 'Zeropingheroes\LanagerCore\InfoPageController');
+// Info Page
+Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
 
 
 
 // Default
 Route::get('/', function()
 {
-	return Redirect::to('info');
+	return Redirect::to('infoPage');
 });

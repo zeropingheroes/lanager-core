@@ -16,7 +16,8 @@
         "patricktalmadge/bootstrapper": "dev-develop",
         "tsukanov/steam-locomotive": "dev-master",
         "lightopenid/lightopenid": "dev-master",
-        "zeropingheroes/steam-browser-protocol": "dev-dev"
+        "zeropingheroes/steam-browser-protocol": "dev-dev",
+        "machuga/authority-l4" : "dev-master"
     },
     "autoload": {
         "classmap": [

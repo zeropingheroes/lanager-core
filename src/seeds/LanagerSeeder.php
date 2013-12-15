@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder,
-Zeropingheroes\LanagerCore\Models\InfoPage;
+Zeropingheroes\LanagerCore\Models\InfoPage,
+Zeropingheroes\LanagerCore\Models\Role;
 
 class LanagerSeeder extends Seeder {
 
@@ -15,6 +16,7 @@ class LanagerSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('InfoPageTableSeeder');
+		$this->call('RolesTableSeeder');
 	}
 
 }
@@ -42,3 +44,24 @@ class InfoPageTableSeeder extends Seeder {
     }
 
 }
+
+
+class RolesTableSeeder extends Seeder {
+    
+    public function run()
+    {
+
+        DB::table('roles')->delete(); // Empty before we seed
+
+        $roles = array(
+        	array('name' => 'SuperAdmin'),
+        	array('name' => 'InfoPageAdmin'),
+        	);
+        
+        foreach($roles as $role)
+        {
+	        Role::create($role);
+        }
+	}
+}
+

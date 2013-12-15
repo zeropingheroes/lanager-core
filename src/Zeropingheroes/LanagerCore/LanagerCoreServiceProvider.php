@@ -2,6 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 use Config;
+use Authority\Authority;
+
 
 class LanagerCoreServiceProvider extends ServiceProvider {
 
@@ -26,6 +28,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->register('Zeropingheroes\SteamBrowserProtocol\SteamBrowserProtocolServiceProvider');
 
 		include __DIR__.'/../../routes.php';
+		include __DIR__.'/../../filters.php';
 		include __DIR__.'/../../composers.php';
 		include __DIR__.'/../../macros.php';
 		include __DIR__.'/../../bindings.php';
@@ -73,6 +76,22 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 			$loader->alias('Thumbnail'				,'Bootstrapper\Thumbnail');
 			$loader->alias('Typeahead'				,'Bootstrapper\Typeahead');
 			$loader->alias('Typography'				,'Bootstrapper\Typography');
+			$loader->alias('Authority'				,'Authority\AuthorityL4\Facades\Authority');
+		});
+
+		// Initialise authority with its own config file
+		$this->app['authority'] = $this->app->share(function($app)
+		{
+			$user = $app['auth']->user();
+			$authority = new Authority($user);
+			$fn = $app['config']->get('lanager-core::authority.initialize', null);
+
+			if($fn)
+			{
+				$fn($authority);
+			}
+
+			return $authority;
 		});
 
 	}

@@ -14,14 +14,6 @@
 
 <br>
 
-{{ Form::open(array('route' => array('info.destroy', $infoPage->id), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?')) }}
-
-{{ Form::actions( array(
-	Button::link(route('info.edit', array('info' => $infoPage->id)), 'Edit'),
-	Button::danger_submit('Delete'))
-	)
-}}
-
-{{ Form::close() }}
+{{ HTML::resourceButtons('infoPage',$infoPage->id) }}
 
 @endsection

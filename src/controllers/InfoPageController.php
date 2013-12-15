@@ -7,6 +7,13 @@ use Zeropingheroes\LanagerCore\Models\InfoPage,
 
 class InfoPageController extends BaseController {
 
+	
+	public function __construct()
+	{
+		// Check if user can access requested method
+		$this->beforeFilter('authority',array('only' => array('create', 'store', 'edit', 'update', 'destroy') ));
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -51,10 +58,10 @@ class InfoPageController extends BaseController {
 		
 		if(!$infoPage->save())
 		{
-			return Redirect::route('info.create')->withErrors($infoPage->errors());
+			return Redirect::route('infoPage.create')->withErrors($infoPage->errors());
 		}
 
-		return Redirect::route('info.show',array('info' => $infoPage->id));
+		return Redirect::route('infoPage.show',array('infoPage' => $infoPage->id));
 	}
 
 	/**
@@ -106,10 +113,10 @@ class InfoPageController extends BaseController {
 		
 		if(!$infoPage->save())
 		{
-			return Redirect::route('info.edit',array('info' => $infoPage->id))->withErrors($infoPage->errors());
+			return Redirect::route('infoPage.edit',array('infoPage' => $infoPage->id))->withErrors($infoPage->errors());
 		}
 
-		return Redirect::route('info.show',array('info' => $infoPage->id));
+		return Redirect::route('infoPage.show',array('infoPage' => $infoPage->id));
 
 	}
 
@@ -122,7 +129,7 @@ class InfoPageController extends BaseController {
 	public function destroy($id)
 	{
 		InfoPage::destroy($id);
-		return Redirect::route('info.index');
+		return Redirect::route('infoPage.index');
 
 	}
 

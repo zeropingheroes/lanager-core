@@ -7,6 +7,8 @@
 	@include('lanager-core::infoPage.list')
 </ul>
 <br>
-{{ Button::link(route('info.create'), 'Create') }}
+@if( Authority::can('create','InfoPage') )
+	{{ Button::link(route('infoPage.create'), 'Create') }}
+@endif
 
 @endsection
