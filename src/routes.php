@@ -32,7 +32,7 @@ Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
 
 
 // Default
-Route::get('/', function()
+Route::get('/', array('before' => 'installed', function()
 {
 	return Redirect::to('infoPage');
-});
+}));

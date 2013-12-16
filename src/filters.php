@@ -2,10 +2,28 @@
 
 /*
 |--------------------------------------------------------------------------
-| Filters
+| First Time Install Filter
 |--------------------------------------------------------------------------
+|
+| The "installed" filter checks if the app has been marked as installed.
+|
 */
 
+Route::filter('installed', function()
+{
+	if (Config::get('lanager-core::installationCompleted') != true ) return Redirect::to('install');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Authority Filter
+|--------------------------------------------------------------------------
+|
+| The "installed" filter checks if the remote user can perform the requested
+| action on the specified resource.
+|
+*/
 Route::filter('authority', function($route, $request)
 {
 	// Get request details
@@ -25,3 +43,4 @@ Route::filter('authority', function($route, $request)
 		return App::abort(403, 'You do not have permission to '.$action.' '.$resource.' '.$item);
 	}
 });
+

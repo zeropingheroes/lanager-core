@@ -14,6 +14,21 @@ return array(
 	|
 	*/
 
-	'steamWebApiKey' => 'CAA77AF575CCFA506284D5BDFF5D09B8',
+	'steamWebApiKey' => '',
+
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Installation
+	|--------------------------------------------------------------------------
+	|
+	| If the installer has not yet been completed, this will be set to false.
+	| If all installation steps have been manually run, this can be set to true.
+	| If the app needs to be manually checked and re-installed, set this to false.
+	|
+	*/
+
+	'installationCompleted'	=> false,
 
 );
