@@ -49,9 +49,9 @@ class LocomotiveSteamUserRepository implements SteamUserRepositoryInterface {
 			// Present on all profiles
 			$steamUser->id			= $profile->steamid;
 			$steamUser->username	= $profile->personaname;
-			$steamUser->real_name	= $profile->realname;
 
 			// Optional
+			if (isset($profile->realname))			$steamUser->real_name			= $profile->realname;
 			if (isset($profile->timecreated))		$steamUser->creation_time			= $profile->timecreated;
 			if (isset($profile->avatar))			$steamUser->avatar_url				= $profile->avatar;
 			if (isset($profile->primaryclanid))		$steamUser->primary_group_id		= $profile->primaryclanid;
