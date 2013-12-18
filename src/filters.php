@@ -11,7 +11,7 @@
 
 Route::filter('installed', function()
 {
-	if (Config::get('lanager-core::installationCompleted') != true ) return Redirect::to('install');
+	if (Config::get('lanager-core::installationCompleted') !== true ) return Redirect::to('install');
 });
 
 
