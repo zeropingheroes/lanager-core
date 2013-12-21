@@ -3,7 +3,9 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use \DateTime;
+use \Locomotive;
+use \Config,
+	\Cache;
 use Illuminate\Support\Facades\DB as DB;
 use Zeropingheroes\LanagerCore\Models\User,
 	Zeropingheroes\LanagerCore\Models\SteamState,
@@ -62,6 +64,19 @@ class GetUserSteamStates extends Command {
 		$this->info('Querying Steam for user states');
 		$steamUsers = $this->steamUsers->getUsers($users);
 
+		// Retrieve all Steam apps by ID to use as lookup table
+		$steamApps = Cache::remember('steamApps', 60*6, function()
+		{
+			$this->info('Querying Steam for list of all apps');
+			$steamApi = new Locomotive(Config::get('lanager-core::steamWebApiKey'));
+			$steamAppList = $steamApi->ISteamApps->GetAppList();
+			foreach($steamAppList->applist->apps as $steamApp)
+			{
+				$steamApps[$steamApp->appid] = array('name' => $steamApp->name);
+			}
+			return $steamApps;
+		});
+
 		$this->info('Inserting user states into database');
 		
 		$successCount = 0;
@@ -80,7 +95,7 @@ class GetUserSteamStates extends Command {
 				$steamState->username		= $steamUser->username;
 				$steamState->status_code	= $steamUser->status;
 				$steamState->app_id			= $steamUser->current_app_id;
-				$steamState->app_name		= $steamUser->current_app_name;
+				$steamState->app_name		= is_numeric($steamUser->current_app_id) ? $steamApps[$steamUser->current_app_id]['name'] : '';
 				$steamState->server_ip		= $steamUser->current_server_ip;
 
 				$steamState->save();
