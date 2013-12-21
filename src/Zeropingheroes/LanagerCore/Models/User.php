@@ -62,4 +62,9 @@ class User extends BaseModel implements UserInterface
 		return false;
 	}
 
+	public function steamStates()
+	{
+        return $this->hasMany('Zeropingheroes\LanagerCore\Models\SteamState', 'steam_id_64', 'steam_id_64');
+	}
+
 }
