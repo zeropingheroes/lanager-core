@@ -20,8 +20,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown"><img src="{{ Auth::user()->avatar }}" alt="Avatar"> {{{ (Auth::user()->username) }}} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ route('user.show', Auth::user()->id) }}">Profile</a></li>
-								<li><a href="{{ route('user.logout') }}">Log Out</a></li>
+								<li>{{ link_to_route('user.show', 'Profile',  Auth::user()->id) }}</li>
+								<li>{{ link_to_route('user.logout', 'Log Out') }}</li>
 							</ul>
 						</li>
 					@else
