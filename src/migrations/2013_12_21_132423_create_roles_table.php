@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInfoPagesTable extends Migration {
+class CreateRolesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,12 +11,9 @@ class CreateInfoPagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('info_pages', function($table)
-		{
+		Schema::create('roles', function($table) {
 			$table->increments('id');
-			$table->integer('parent_id')->nullable()->unsigned();
-			$table->string('title');
-			$table->text('content')->nullable();
+			$table->string('name');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +25,7 @@ class CreateInfoPagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('info_pages');
+		Schema::drop('roles');
 	}
 
 }

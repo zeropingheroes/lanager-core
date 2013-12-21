@@ -21,6 +21,7 @@ class CreateUserSteamStatesTable extends Migration {
 			$table->string('app_name')->nullable();
 			$table->string('server_ip')->nullable();
 			$table->timestamp('created_at');
+			$table->foreign('steam_id_64')->references('steam_id_64')->on('users')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
