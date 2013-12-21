@@ -69,7 +69,7 @@ class GetUserSteamStates extends Command {
 				'created_at' => new DateTime
 			);
 		}
-		$newStates = DB::table('user_steam_states')->insert($UserSteamStates);
+		$newStates = DB::table('steam_states')->insert($UserSteamStates);
 		$this->info(count($steamUsers).' Steam users successfully updated!');
 	}
 

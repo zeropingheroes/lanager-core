@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserSteamStatesTable extends Migration {
+class CreateSteamStatesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,7 +11,7 @@ class CreateUserSteamStatesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_steam_states', function($table)
+		Schema::create('steam_states', function($table)
 		{
 			$table->increments('id');
 			$table->string('steam_id_64', 17);
@@ -32,7 +32,7 @@ class CreateUserSteamStatesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_steam_states');
+		Schema::drop('steam_states');
 	}
 
 }
