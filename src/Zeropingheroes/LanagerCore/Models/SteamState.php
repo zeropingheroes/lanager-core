@@ -7,6 +7,33 @@ class SteamState extends BaseModel
 {
 	public function user()
 	{
-		return $this->belongsTo('Zeropingheroes\LanagerCore\Models\User', 'users', 'steam_id_64', 'steam_id_64');
+		return $this->belongsTo('Zeropingheroes\LanagerCore\Models\User');
+	}
+
+	/**
+	 * Translate the status code to English
+	 *
+	 * @return string
+	 */
+	public function getStatus()
+	{
+		switch ($this->status_code)
+		{
+			case '1':
+				return 'Online';
+			case '2':
+				return 'Busy';
+			case '3':
+				return 'Away';
+			case '4':
+				return 'Snooze';
+			case '5':
+				return 'Looking to trade';
+			case '6':
+				return 'Looking to play';
+			case '0':
+			default:
+			return 'Offline'; // TODO: Return e.g. "last online 15 minutes ago"
+		}
 	}
 }

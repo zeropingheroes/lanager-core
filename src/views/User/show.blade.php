@@ -1,7 +1,7 @@
 @extends('lanager-core::layouts.default')
 @section('content')
 <div class="user_show_header">
-	<img class="user_show_avatar_large" src="{{ $steamUser->getLargeAvatarUrl() }}">
+	<img class="user_show_avatar_large" src="{{ $user->getLargeAvatarUrl() }}">
 	<span class="user_show_username">{{{ $user->username }}}</span>
 	<ul class="user_show_tools">
 		<li><a href="{{ SteamBrowserProtocol::addFriend($user->steam_id_64) }}">Add</a></li>
@@ -11,7 +11,7 @@
 </div>
 <div class="user_show_content">
 	<div class="user_show_status pull-right">
-		{{{ $steamUser->getStatus() }}}
+		{{ $steamStates->first()->getStatus() }}
 	</div>
 	<br>
 </div>

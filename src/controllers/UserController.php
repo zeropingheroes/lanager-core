@@ -1,6 +1,7 @@
 <?php namespace Zeropingheroes\LanagerCore;
 
 use Zeropingheroes\LanagerCore\Models\User,
+	Zeropingheroes\LanagerCore\Models\SteamState,
 	Zeropingheroes\LanagerCore\Repositories\SteamUserRepositoryInterface;
 use \LightOpenID;
 use App, Auth, Input, Request, Redirect, View;
@@ -43,7 +44,7 @@ class UserController extends BaseController {
 	 */
 	public function store($steamUser)
 	{
-
+		//
 	}
 
 	/**
@@ -56,12 +57,12 @@ class UserController extends BaseController {
 	{
 		if( $user = User::find($id) )
 		{
-			$steamUser = $this->steamUsers->getUser($user->steam_id_64);		
+			$steamStates = $user->steamStates;
 
 			return View::make('lanager-core::user.show')
 						->with('title',$user->username)
 						->with('user',$user)
-						->with('steamUser', $steamUser);
+						->with('steamStates', $steamStates);
 		}
 		else
 		{

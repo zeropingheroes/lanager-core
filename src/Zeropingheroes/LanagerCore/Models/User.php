@@ -64,7 +64,27 @@ class User extends BaseModel implements UserInterface
 
 	public function steamStates()
 	{
-        return $this->hasMany('Zeropingheroes\LanagerCore\Models\SteamState', 'steam_id_64', 'steam_id_64');
+		return $this->hasMany('Zeropingheroes\LanagerCore\Models\SteamState');
+	}
+
+	/**
+	 * Get the URL for the user's medium avatar.
+	 *
+	 * @return string
+	 */
+	public function getMediumAvatarUrl()
+	{
+		return str_replace('.jpg', '_medium.jpg', $this->avatar);
+	}
+
+	/**
+	 * Get the URL for the user's large avatar.
+	 *
+	 * @return string
+	 */
+	public function getLargeAvatarUrl()
+	{
+		return str_replace('.jpg', '_full.jpg', $this->avatar);
 	}
 
 }

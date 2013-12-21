@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use \DateTime;
 use Illuminate\Support\Facades\DB as DB;
 use Zeropingheroes\LanagerCore\Models\User,
-	Zeropingheroes\LanagerCore\Models\SteamUserState,
+	Zeropingheroes\LanagerCore\Models\SteamState,
 	Zeropingheroes\LanagerCore\Repositories\SteamUserRepositoryInterface;
 
 class GetUserSteamStates extends Command {
@@ -63,29 +63,39 @@ class GetUserSteamStates extends Command {
 		$steamUsers = $this->steamUsers->getUsers($users);
 
 		$this->info('Inserting user states into database');
+		
+		$successCount = 0;
+		$failureCount = 0;
+
 		foreach($steamUsers as $steamUser)
 		{
-			$UserSteamStates[] = array(
-				'steam_id_64' => $steamUser->id,
-				'username' => $steamUser->username,
-				'status_code' => $steamUser->status,
-				'app_id' => $steamUser->current_app_id,
-				'app_name' => $steamUser->current_app_name,
-				'server_ip' => $steamUser->current_server_ip,
-				'created_at' => new DateTime
-			);
-		}
+			try
+			{
+				// Find the user to which the state belongs to
+				$user = User::where('steam_id_64',$steamUser->id)->first();
 
-		try
-		{
-			DB::table('steam_states')->insert($UserSteamStates);
+				// Create a new state
+				$steamState = new SteamState;
+				$steamState->user_id		= $user->id;
+				$steamState->username		= $steamUser->username;
+				$steamState->status_code	= $steamUser->status;
+				$steamState->app_id			= $steamUser->current_app_id;
+				$steamState->app_name		= $steamUser->current_app_name;
+				$steamState->server_ip		= $steamUser->current_server_ip;
+
+				$steamState->save();
+	
+				$successCount++; // Only incremented if no exceptions above
+			}
+			catch(\Exception $e) // Catch any exceptions and print an error but continue
+			{
+				$this->error('Error inserting user state for '.$steamUser->id.' "'.$steamUser->username.'" : '. $e->getMessage());
+				$failureCount++;
+			}
 		}
-		catch(\Exception $e)
-		{
-			$this->error('Error inserting user states: '. $e->getMessage());
-			return;
-		}
-		$this->info(count($steamUsers).' Steam user states successfully added!');
+		// Provide info on results
+		$this->info($successCount.' Steam user states successfully added!');
+		if( $failureCount > 0 ) $this->error($failureCount.' Steam user states were not added due to errors');
 	}
 
 }
