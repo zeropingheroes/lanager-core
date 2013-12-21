@@ -20,6 +20,7 @@ class SteamState extends BaseModel
 		switch ($this->status_code)
 		{
 			case '1':
+				if( !empty($this->app_id) ) return 'In Game';
 				return 'Online';
 			case '2':
 				return 'Busy';
