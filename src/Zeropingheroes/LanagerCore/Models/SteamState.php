@@ -36,4 +36,14 @@ class SteamState extends BaseModel
 			return 'Offline'; // TODO: Return e.g. "last online 15 minutes ago"
 		}
 	}
+
+	/**
+	 * Get the most recent Steam state
+	 *
+	 * @return Query
+	 */
+	public function scopeLatest($query)
+	{
+		return $query->orderBy('created_at', 'desc')->first();
+	}
 }

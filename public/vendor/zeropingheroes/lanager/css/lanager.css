@@ -30,6 +30,12 @@ hr {
 	margin-bottom: 5px;
 }
 
+/* dark table borders */
+table.table tbody tr td {
+	border-color: #333;
+	vertical-align: middle;
+}
+
 /* -------------------------------------------------------------------
    NAVBAR
    -------------------------------------------------------------------

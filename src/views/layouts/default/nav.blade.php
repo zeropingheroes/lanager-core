@@ -10,6 +10,9 @@
 
 			<div class="nav-collapse collapse">
 				<ul class="nav">
+					<li class="{{ Request::is('user*') ? 'active' : '' }}">
+						{{ link_to_route('user.index', 'People') }}
+					</li>
 					@include('lanager-core::layouts.default.info')
 				</ul>
 				<ul class="nav pull-right">

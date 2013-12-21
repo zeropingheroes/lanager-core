@@ -11,7 +11,7 @@
 </div>
 <div class="user_show_content">
 	<div class="user_show_status pull-right">
-		{{ $steamStates->first()->getStatus() }}
+		{{ 	$user->steamStates()->latest()->getStatus() }}
 	</div>
 	<br>
 </div>

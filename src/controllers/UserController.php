@@ -23,7 +23,10 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		//
+		$users = User::orderBy('username', 'asc')->paginate(10);
+		return View::make('lanager-core::user.list')
+					->with('title','People')
+					->with('users',$users);
 	}
 
 	/**
@@ -57,12 +60,9 @@ class UserController extends BaseController {
 	{
 		if( $user = User::find($id) )
 		{
-			$steamStates = $user->steamStates;
-
 			return View::make('lanager-core::user.show')
 						->with('title',$user->username)
-						->with('user',$user)
-						->with('steamStates', $steamStates);
+						->with('user',$user);
 		}
 		else
 		{
