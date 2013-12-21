@@ -47,8 +47,9 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 			return new LanagerCore;
 		});
 
+		// Initialise command with Steam user repository
 		$this->app['steam.get-user-states'] = $this->app->share(function() {
-			return new Commands\GetSteamUserStates( new Repositories\LocomotiveSteamUserRepository);
+			return new Commands\GetUserSteamStates( new Repositories\LocomotiveSteamUserRepository);
 		});
 
 		$this->commands(

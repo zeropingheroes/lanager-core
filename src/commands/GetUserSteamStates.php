@@ -9,7 +9,7 @@ use Zeropingheroes\LanagerCore\Models\User,
 	Zeropingheroes\LanagerCore\Models\SteamUserState,
 	Zeropingheroes\LanagerCore\Repositories\SteamUserRepositoryInterface;
 
-class GetSteamUserStates extends Command {
+class GetUserSteamStates extends Command {
 
 	/**
 	 * The console command name.
@@ -31,7 +31,6 @@ class GetSteamUserStates extends Command {
 	 * @var SteamUser
 	 */
 	protected $steamUsers;
-
 
 	/**
 	 * Create a new command instance.
@@ -60,7 +59,7 @@ class GetSteamUserStates extends Command {
 		$this->info('Inserting user states into database');
 		foreach($steamUsers as $steamUser)
 		{
-			$steamUserStates[] = array(
+			$UserSteamStates[] = array(
 				'steam_id_64' => $steamUser->id,
 				'username' => $steamUser->username,
 				'status_code' => $steamUser->status,
@@ -70,8 +69,8 @@ class GetSteamUserStates extends Command {
 				'created_at' => new DateTime
 			);
 		}
-		$newStates = DB::table('steam_user_states')->insert($steamUserStates);
-		$this->info(count($steamUsers).' steam users successfully updated!');
+		$newStates = DB::table('user_steam_states')->insert($UserSteamStates);
+		$this->info(count($steamUsers).' Steam users successfully updated!');
 	}
 
 }
