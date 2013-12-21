@@ -52,6 +52,12 @@ class GetUserSteamStates extends Command {
 	{
 		$this->info('Loading all users from database');
 		$users = User::all()->lists('steam_id_64');
+
+		if(count($users) == 0)
+		{
+			$this->error('No users in database!');
+			return;
+		}
 		
 		$this->info('Querying Steam for user states');
 		$steamUsers = $this->steamUsers->getUsers($users);
@@ -69,8 +75,17 @@ class GetUserSteamStates extends Command {
 				'created_at' => new DateTime
 			);
 		}
-		$newStates = DB::table('steam_states')->insert($UserSteamStates);
-		$this->info(count($steamUsers).' Steam users successfully updated!');
+
+		try
+		{
+			DB::table('steam_states')->insert($UserSteamStates);
+		}
+		catch(\Exception $e)
+		{
+			$this->error('Error inserting user states: '. $e->getMessage());
+			return;
+		}
+		$this->info(count($steamUsers).' Steam user states successfully added!');
 	}
 
 }
