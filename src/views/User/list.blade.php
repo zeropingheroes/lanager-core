@@ -4,12 +4,15 @@
 	{{ Table::open() }}
 	@foreach ($users as $user)
 		<?php
+		// Get steam state for user if one exists
 		$steamState = $user->steamStates()->latest();
-		$appLink = ($steamState->app_id) ? link_to(SteamBrowserProtocol::viewAppInStore($steamState->app_id), $steamState->app_name) : '';
-		$connectLink = ($steamState->server_ip) ? link_to(SteamBrowserProtocol::connectToServer($steamState->server_ip), $steamState->server_ip) : '';
+		$status = (count($user->steamStates)) ? $steamState->getStatus() : '';
+		$appLink = (!empty($steamState->app_id)) ? link_to(SteamBrowserProtocol::viewAppInStore($steamState->app_id), $steamState->app_name) : '';
+		$connectLink = (!empty($steamState->server_ip)) ? link_to(SteamBrowserProtocol::connectToServer($steamState->server_ip), $steamState->server_ip) : '';
+
 		$tableBody[] = array(
 			'user'		=> '<img src="'.$user->avatar.'"> '.link_to_route('user.show', $user->username, $user->id),
-			'status'	=> $steamState->getStatus(),
+			'status'	=> $status,
 			'app'		=> $appLink,
 			'server'	=> $connectLink,
 			);

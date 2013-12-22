@@ -12,15 +12,17 @@
 </div>
 <div class="user_show_content">
 	<div class="user_show_status pull-right">
-		{{ $steamState->getStatus() }}
-		@if( is_numeric($steamState->app_id) )
-			:
-			<a href="{{ SteamBrowserProtocol::viewAppInStore($steamState->app_id) }}">
-				{{{ $steamState->app_name }}}<br>
-				<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $steamState->app_id }}/capsule_184x69.jpg"></a>
-			<br>
-			@if( !empty($steamState->server_ip) )
-				{{ link_to(SteamBrowserProtocol::connectToServer($steamState->server_ip), 'Join') }}
+		@if(count($user->steamStates))
+			{{ $steamState->getStatus() }}
+			@if( is_numeric($steamState->app_id) )
+				:
+				<a href="{{ SteamBrowserProtocol::viewAppInStore($steamState->app_id) }}">
+					{{{ $steamState->app_name }}}<br>
+					<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $steamState->app_id }}/capsule_184x69.jpg"></a>
+				<br>
+				@if( !empty($steamState->server_ip) )
+					{{ link_to(SteamBrowserProtocol::connectToServer($steamState->server_ip), 'Join') }}
+				@endif
 			@endif
 		@endif
 	</div>
