@@ -67,7 +67,6 @@ class GetUserSteamStates extends Command {
 		// Retrieve all Steam apps by ID to use as lookup table
 		$steamApps = Cache::remember('steamApps', 60*6, function()
 		{
-			$this->info('Querying Steam for list of all apps');
 			$steamApi = new Locomotive(Config::get('lanager-core::steamWebApiKey'));
 			$steamAppList = $steamApi->ISteamApps->GetAppList();
 			foreach($steamAppList->applist->apps as $steamApp)
