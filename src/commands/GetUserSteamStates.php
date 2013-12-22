@@ -89,6 +89,11 @@ class GetUserSteamStates extends Command {
 				// Find the user to which the state belongs to
 				$user = User::where('steam_id_64',$steamUser->id)->first();
 
+				// Update their details if they are different
+				if( $user->username != $steamUser->username ) $user->username = $steamUser->username;
+				if( $user->avatar != $steamUser->avatar_url ) $user->avatar = $steamUser->avatar_url;
+				$user->save();
+
 				// Create a new state
 				$steamState = new SteamState;
 				$steamState->user_id		= $user->id;
