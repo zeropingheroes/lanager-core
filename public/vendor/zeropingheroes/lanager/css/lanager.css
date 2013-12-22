@@ -36,6 +36,13 @@ table.table tbody tr td {
 	vertical-align: middle;
 }
 
+/* dark pagination */
+div.pagination ul > li > a,
+div.pagination ul > li > span {
+	background: none !important;
+	border-color: #333;
+}
+
 /* -------------------------------------------------------------------
    NAVBAR
    -------------------------------------------------------------------
