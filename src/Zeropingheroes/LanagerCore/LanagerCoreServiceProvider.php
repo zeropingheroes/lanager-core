@@ -26,6 +26,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->register('VTalbot\Markdown\MarkdownServiceProvider');
 		$this->app->register('Bootstrapper\BootstrapperServiceProvider');
 		$this->app->register('Zeropingheroes\SteamBrowserProtocol\SteamBrowserProtocolServiceProvider');
+		//$this->app->register('Profiler\ProfilerServiceProvider');
 
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../filters.php';
@@ -86,6 +87,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 			$loader->alias('Typeahead'				,'Bootstrapper\Typeahead');
 			$loader->alias('Typography'				,'Bootstrapper\Typography');
 			$loader->alias('Authority'				,'Authority\AuthorityL4\Facades\Authority');
+			//$loader->alias('Profiler'				,'Profiler\Facades\Profiler');
 		});
 
 		// Initialise authority with its own config file
