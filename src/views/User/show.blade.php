@@ -5,9 +5,13 @@
 	<img class="user_show_avatar_large" src="{{ $user->getLargeAvatarUrl() }}">
 	<span class="user_show_username">{{{ $user->username }}}</span>
 	<ul class="user_show_tools">
-		<li><a href="{{ SteamBrowserProtocol::addFriend($user->steam_id_64) }}">Add</a></li>
-		<li><a href="{{ SteamBrowserProtocol::messageFriend($user->steam_id_64) }}">Message</a></li>
-		<li><a href="http://www.steamcommunity.com/profiles/{{ $user->steam_id_64 }}" target="_blank">View Steam Profile</a></li>
+		@if( Auth::check() && $user->id == Auth::user()->id )
+			<li>{{ link_to(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
+		@else
+			<li>{{ link_to(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
+			<li>{{ link_to(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
+			<li>{{ link_to('http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank')) }}</li>
+		@endif
 	</ul>
 </div>
 <div class="user_show_content">
