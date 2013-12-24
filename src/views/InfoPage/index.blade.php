@@ -8,7 +8,7 @@
 </ul>
 <br>
 @if( Authority::can('create','InfoPage') )
-	{{ Button::link(route('infoPage.create'), 'Create') }}
+	{{ Button::link(URL::route('infoPage.create'), 'Create') }}
 @endif
 
 @endsection

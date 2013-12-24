@@ -25,7 +25,7 @@ HTML::macro('validationErrors', function($errors)
 HTML::macro('resourceButtons', function($resourceName,$itemId)
 {
 	// For users who can update, generate a button
-	$updateButton = ( Authority::can('update',$resourceName) ? Button::link(route($resourceName.'.edit', array($resourceName => $itemId)), 'Edit') : '' );
+	$updateButton = ( Authority::can('update',$resourceName) ? Button::link(URL::route($resourceName.'.edit', array($resourceName => $itemId)), 'Edit') : '' );
 
 	// For users who can delete, generate a button
 	if( Authority::can('delete',$resourceName) )
