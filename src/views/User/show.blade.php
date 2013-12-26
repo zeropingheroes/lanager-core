@@ -6,11 +6,12 @@
 	<span class="user_show_username">{{{ $user->username }}}</span>
 	<ul class="user_show_tools">
 		@if( Auth::check() && $user->id == Auth::user()->id )
-			<li>{{ link_to(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
+			<li>{{ Button::inverse_link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
+			<li>{{ HTML::deleteResourceButton('user',$user->id,'Delete Account') }}</li>
 		@else
-			<li>{{ link_to(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
-			<li>{{ link_to(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
-			<li>{{ link_to('http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank')) }}</li>
+			<li>{{ Button::inverse_link(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
+			<li>{{ Button::inverse_link(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
+			<li>{{ Button::inverse_link('http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank')) }}</li>
 		@endif
 	</ul>
 </div>

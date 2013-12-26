@@ -25,7 +25,7 @@ HTML::macro('validationErrors', function($errors)
 HTML::macro('resourceButtons', function($resourceName,$itemId)
 {
 	// For users who can update, generate a button
-	$updateButton = ( Authority::can('update',$resourceName) ? Button::link(URL::route($resourceName.'.edit', array($resourceName => $itemId)), 'Edit') : '' );
+	$updateButton = ( Authority::can('update',$resourceName) ? Button::inverse_link(URL::route($resourceName.'.edit', array($resourceName => $itemId)), 'Edit') : '' );
 
 	// For users who can delete, generate a button
 	if( Authority::can('delete',$resourceName) )
@@ -34,7 +34,7 @@ HTML::macro('resourceButtons', function($resourceName,$itemId)
 		$output .= Form::actions( array(
 			// Insert the update button (will be an empty var for users who can't update)
 			$updateButton,
-			Button::danger_submit('Delete'))
+			Button::inverse_submit('Delete'))
 			);
 		$output .= Form::close();
 	}
@@ -44,6 +44,16 @@ HTML::macro('resourceButtons', function($resourceName,$itemId)
 	}
 	return $output;
 
+});
+
+
+// Update and/or delete buttons for priviledged users
+HTML::macro('deleteResourceButton', function($resourceName,$itemId, $buttonTitle)
+{
+	$output = Form::open(array('route' => array($resourceName.'.destroy', $itemId), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?'));
+	$output .= Button::inverse_submit($buttonTitle);
+	$output .= Form::close();
+	return $output;
 });
 
 /*
