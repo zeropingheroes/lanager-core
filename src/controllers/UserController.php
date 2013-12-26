@@ -2,6 +2,7 @@
 
 use Zeropingheroes\LanagerCore\Models\User,
 	Zeropingheroes\LanagerCore\Models\SteamState,
+	Zeropingheroes\LanagerCore\Models\Role,
 	Zeropingheroes\LanagerCore\Repositories\SteamUserRepositoryInterface;
 use \LightOpenID;
 use App, Auth, Input, Request, Redirect, View;
@@ -122,6 +123,10 @@ class UserController extends BaseController {
 				{
 					$user = User::where('steam_id_64', '=', $steamId)->first();
 					Auth::login($user);
+
+					// Make the first user SuperAdmin
+					if( count(User::all()) == 1 )	$user->roles()->attach(Role::where('name', '=', 'SuperAdmin')->firstOrFail());
+
 					return Redirect::to('/');
 				}
 				else
