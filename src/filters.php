@@ -30,7 +30,7 @@ Route::filter('authority', function($route, $request)
 	$routeName = explode('.', Route::currentRouteName());
 	$resource = $routeName[0];
 	$action = $routeName[1];
-	$item = $route->getParameter($resource);
+	$item = $route->parameter($resource);
 
 	// Replace laravel-style route action names with their CRUD equivalents
 	$actionsToReplace = array('store', 'show', 'index', 'edit', 'destroy');
