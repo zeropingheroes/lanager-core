@@ -9,7 +9,7 @@
 |
 */
 
-// Validation errors wrapped in bootstrap style
+// Show validation errors wrapped in bootstrap style
 HTML::macro('validationErrors', function($errors)
 {
 	if( $errors->count() > 0 )
@@ -21,40 +21,35 @@ HTML::macro('validationErrors', function($errors)
 	}
 });
 
-// Update and/or delete buttons for priviledged users
-HTML::macro('resourceButtons', function($resourceName,$itemId)
-{
-	// For users who can update, generate a button
-	$updateButton = ( Authority::can('update',$resourceName) ? Button::inverse_link(URL::route($resourceName.'.edit', array($resourceName => $itemId)), 'Edit') : '' );
 
-	// For users who can delete, generate a button
-	if( Authority::can('delete',$resourceName) )
+// Show "Create" button for a resource
+HTML::macro('resourceCreate', function($resource, $buttonValue)
+{
+	if( Authority::can('create', $resource) ) return Button::inverse_link(URL::route($resource.'.create'), $buttonValue);
+});
+
+
+// Show "Edit" button for a specific resource
+HTML::macro('resourceUpdate', function($resource, $id, $buttonValue)
+{
+	if( Authority::can('update', $resource, $id) ) return Button::inverse_link(URL::route($resource.'.edit', array($resource => $id)), $buttonValue);
+});
+
+
+// Show "Delete" button for a specific resource
+HTML::macro('resourceDelete', function($resource, $id, $buttonValue)
+{
+	if( Authority::can('delete', $resource, $id) )
 	{
-		$output = Form::open(array('route' => array($resourceName.'.destroy', $itemId), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?'));
-		$output .= Form::actions( array(
-			// Insert the update button (will be an empty var for users who can't update)
-			$updateButton,
-			Button::inverse_submit('Delete'))
-			);
+		$output = Form::open(array('route' => array($resource.'.destroy', $id), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?', 'class' => 'resource-destroy'));
+		$output .= Button::inverse_submit($buttonValue);
 		$output .= Form::close();
-	}
-	else
-	{
-		$output = $updateButton;
-	}
-	return $output;
 
+		return $output;
+	}
 });
 
 
-// Update and/or delete buttons for priviledged users
-HTML::macro('deleteResourceButton', function($resourceName,$itemId, $buttonTitle)
-{
-	$output = Form::open(array('route' => array($resourceName.'.destroy', $itemId), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?'));
-	$output .= Button::inverse_submit($buttonTitle);
-	$output .= Form::close();
-	return $output;
-});
 
 /*
 |--------------------------------------------------------------------------

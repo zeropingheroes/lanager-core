@@ -43,6 +43,11 @@ div.pagination ul > li > span {
 	border-color: #333;
 }
 
+/* make delete form button inline */
+form.resource-destroy {
+	display: inline;
+}
+
 /* -------------------------------------------------------------------
    NAVBAR
    -------------------------------------------------------------------

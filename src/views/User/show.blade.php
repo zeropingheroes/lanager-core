@@ -7,7 +7,7 @@
 	<ul class="user_show_tools">
 		@if( Auth::check() && $user->id == Auth::user()->id )
 			<li>{{ Button::inverse_link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
-			<li>{{ HTML::deleteResourceButton('user',$user->id,'Delete Account') }}</li>
+			<li>{{ HTML::resourceDelete('user',$user->id,'Delete Account') }}</li>
 		@else
 			<li>{{ Button::inverse_link(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
 			<li>{{ Button::inverse_link(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>

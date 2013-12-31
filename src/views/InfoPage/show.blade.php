@@ -14,6 +14,8 @@
 
 <br>
 
-{{ HTML::resourceButtons('infoPage',$infoPage->id) }}
+{{ HTML::resourceUpdate('infoPage',$infoPage->id, 'Edit') }}
+
+{{ HTML::resourceDelete('infoPage',$infoPage->id, 'Delete') }}
 
 @endsection
