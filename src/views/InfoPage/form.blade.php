@@ -9,4 +9,4 @@
 {{ Form::label('parent_id', 'Parent') }}
 {{ Form::select('parent_id', $infoPagesDropdown) }}
 
-{{ Form::actions( Form::submit('Submit') ) }}
+{{ Form::actions( Button::inverse_submit('Submit') ) }}

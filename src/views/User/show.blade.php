@@ -3,7 +3,7 @@
 <?php $steamState = $user->steamStates()->latest(); ?>
 <div class="user_show_header">
 	<img class="user_show_avatar_large" src="{{ $user->getLargeAvatarUrl() }}">
-	<span class="user_show_username">{{{ $user->username }}}</span>
+	<h1 class="user_show_username">{{{ $user->username }}}</h1>
 	<ul class="user_show_tools">
 		@if( Auth::check() && $user->id == Auth::user()->id )
 			<li>{{ Button::inverse_link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
@@ -31,6 +31,22 @@
 			@endif
 		@endif
 	</div>
-	<br>
+
+	@if( count($user->roles) )
+		<h2>Roles</h2>
+		<ul>
+			@foreach($user->roles as $role)
+				<li>{{{ $role->name }}}</li>
+			@endforeach
+		</ul>
+	@endif
+
+	@if( Authority::can( 'manage', 'user' ) )
+		<h2>Administration</h2>
+		<ul class="user-show-admin">
+			<li>{{ Button::inverse_link(URL::route('user.roles.edit', $user->id), 'Manage Roles' ) }}</li>
+		</ul>
+	@endif
+
 </div>
 @endsection

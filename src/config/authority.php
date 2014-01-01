@@ -23,7 +23,7 @@ return array(
 			
 			if( $user->hasRole('InfoPageAdmin') ) 
 			{
-				$authority->allow('manage', 'InfoPage');
+				$authority->allow('manage', 'infoPage');
 			}
 
 		}

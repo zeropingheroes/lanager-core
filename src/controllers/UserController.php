@@ -154,7 +154,46 @@ class UserController extends BaseController {
 	{
 		Auth::logout();
 		return Redirect::back();
-	}	
+	}
+
+	/**
+	 * Show the form for editing the specified user's roles.
+	 *
+	 * @return Redirect
+	 */
+	public function editRoles($id)
+	{
+		if( $user = User::find($id) )
+		{
+			$roles = Role::all();
+			return View::make('lanager-core::user.roles')
+							->with('title', $user->username.' - Roles')
+							->with('user', $user)
+							->with('roles', $roles);
+		}
+		else
+		{
+			App::abort(404, 'Page not found');
+		}
+	}
+
+	/**
+	 * Update the specified user's roles in storage.
+	 *
+	 * @return Redirect
+	 */
+	public function updateRoles($id)
+	{
+		if( $user = User::find($id) )
+		{
+			$user->roles()->sync(Input::get('userRoles'));
+			return Redirect::route('user.roles.edit',array('user' => $user->id));
+		}
+		else
+		{
+			App::abort(404, 'Page not found');
+		}
+	}
 
 	/**
 	 * Import the specified Steam user

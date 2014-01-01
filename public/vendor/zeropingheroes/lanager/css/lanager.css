@@ -143,7 +143,7 @@ input, textarea, select {
 }
 
 .user_show_username {
-	font-size: 200%;
+	display: inline;
 }
 
 ul.user_show_tools {
@@ -156,4 +156,9 @@ ul.user_show_tools {
 
 .user_show_status {
 	text-align: right;
+}
+
+ul.user-show-admin {
+	list-style: none;
+	margin: 0px;
 }

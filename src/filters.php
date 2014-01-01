@@ -2,10 +2,10 @@
 
 /*
 |--------------------------------------------------------------------------
-| First Time Install Filter
+| First Time Install
 |--------------------------------------------------------------------------
 |
-| The "installed" filter checks if the app has been marked as installed.
+| Checks if the app has been marked as installed.
 |
 */
 
@@ -17,14 +17,15 @@ Route::filter('installed', function()
 
 /*
 |--------------------------------------------------------------------------
-| Authority Filter
+| Resource Permission
 |--------------------------------------------------------------------------
 |
-| The "installed" filter checks if the remote user can perform the requested
-| action on the specified resource.
+| Checks if the logged in user can perform the requested action on the
+| requested resource item.
+| Gets resource type (e.g. User) action (e.g. delete) and item id from request.
 |
 */
-Route::filter('authority', function($route, $request)
+Route::filter('checkResourcePermission', function($route, $request)
 {
 	// Get request details
 	$routeName = explode('.', Route::currentRouteName());
@@ -38,9 +39,28 @@ Route::filter('authority', function($route, $request)
 	$action = str_replace($actionsToReplace, $replaceWithAction, $action);
 
 	// Check if user is forbidden from performing $action on $resource $item
-	if(Authority::cannot($action, $resource, $item))
+	if( Authority::cannot($action, $resource, $item) )
 	{
 		return App::abort(403, 'You do not have permission to '.$action.' '.$resource.' '.$item);
 	}
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Role
+|--------------------------------------------------------------------------
+|
+| Checks if the logged in user has been assigned the specified role
+|
+*/
+Route::filter('hasRole', function($route, $request, $value)
+{
+	$user = Authority::getCurrentUser();
+
+	// If not logged in or user does not have role
+	if( ! Auth::check() OR ! $user->hasRole($value) )
+	{
+		return App::abort(403, 'You must be assigned the role "'.$value.'" for this request');
+	}
+});

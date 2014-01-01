@@ -11,7 +11,7 @@ class InfoPageController extends BaseController {
 	public function __construct()
 	{
 		// Check if user can access requested method
-		$this->beforeFilter('authority',array('only' => array('create', 'store', 'edit', 'update', 'destroy') ));
+		$this->beforeFilter('checkResourcePermission',array('only' => array('create', 'store', 'edit', 'update', 'destroy') ));
 	}
 
 	/**

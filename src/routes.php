@@ -11,6 +11,8 @@
 |
 */
 
+Route::pattern('user', '[0-9]+');
+
 // User
 Route::get(
 	'user/openidlogin',
@@ -22,14 +24,23 @@ Route::get(
 	array('as' => 'user.logout',
 		'uses' => 'Zeropingheroes\LanagerCore\UserController@logout')
 );
+Route::group(array('before' => 'hasRole:SuperAdmin'), function()
+{
+	Route::get(
+		'user/{user}/roles',
+		array('as' => 'user.roles.edit',
+			'uses' => 'Zeropingheroes\LanagerCore\UserController@editRoles')
+	);
+	Route::put(
+		'user/{user}/roles',
+		array('as' => 'user.roles.update',
+			'uses' => 'Zeropingheroes\LanagerCore\UserController@updateRoles')
+	);
+});
 Route::resource('user', 'Zeropingheroes\LanagerCore\UserController');
-
-
 
 // Info Page
 Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
-
-
 
 // Default
 Route::get('/', array('before' => 'installed', function()
