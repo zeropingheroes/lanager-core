@@ -1,10 +1,10 @@
 @extends('lanager-core::layouts.default')
 @section('content')
 <?php $steamState = $user->steamStates()->latest(); ?>
-<div class="user_show_header">
-	<img class="user_show_avatar_large" src="{{ $user->getLargeAvatarUrl() }}">
-	<h1 class="user_show_username">{{{ $user->username }}}</h1>
-	<ul class="user_show_tools">
+<div class="user-profile-header">
+	<img src="{{ $user->getLargeAvatarUrl() }}">
+	<h1>{{{ $user->username }}}</h1>
+	<ul class="user-profile-actions pull-right">
 		@if( Auth::check() && $user->id == Auth::user()->id )
 			<li>{{ Button::inverse_link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
 			<li>{{ HTML::resourceDelete('user',$user->id,'Delete Account') }}</li>
@@ -15,8 +15,8 @@
 		@endif
 	</ul>
 </div>
-<div class="user_show_content">
-	<div class="user_show_status pull-right">
+<div class="user-profile-content">
+	<div class="user-status pull-right">
 		@if(count($user->steamStates))
 			{{ $steamState->getStatus() }}
 			@if( is_numeric($steamState->app_id) )
@@ -43,7 +43,7 @@
 
 	@if( Authority::can( 'manage', 'user' ) )
 		<h2>Administration</h2>
-		<ul class="user-show-admin">
+		<ul>
 			<li>{{ Button::inverse_link(URL::route('user.roles.edit', $user->id), 'Manage Roles' ) }}</li>
 		</ul>
 	@endif
