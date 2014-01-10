@@ -4,5 +4,8 @@
 	</a> 
 	<ul class="dropdown-menu">
 		@include('lanager-core::infopage.list')
+		@if( Authority::can( 'manage', 'infoPage' ) )
+			<li>{{ link_to_route('infoPage.create', 'Create...') }}</li>
+		@endif
 	</ul>
 </li>
