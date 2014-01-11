@@ -169,3 +169,19 @@ div.user-profile-content ul {
 	list-style: none;
 	margin: 0px;
 }
+
+/* -------------------------------------------------------------------
+   SHOUT - INDEX
+   -------------------------------------------------------------------
+*/
+form.shout-post {
+	width: 100%;
+}
+
+form.shout-post input {
+	width: 90%;
+}
+
+form.shout-post .btn {
+	float: right;
+}

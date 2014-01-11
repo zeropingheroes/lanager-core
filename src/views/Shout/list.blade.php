@@ -3,11 +3,11 @@
 @else
 	@foreach ($shouts as $shout)
 		<?php $date = new ExpressiveDate($shout->created_at); ?>
-		<div class="shout-post">
+		<div class="shout-post-item">
 			<img src="{{ $shout->user->avatar }}">
 			{{ link_to_route('user.show', $shout->user->username, $shout->user->id) }}:
-			<span class="shout-post-content">{{{ $shout->content }}}</span>
-			<span class="shout-post-time" title="{{ $date }}">{{ $date->getRelativeDate() }}</span>
+			<span>{{{ $shout->content }}}</span>
+			<span class="pull-right" title="{{ $date }}">{{ $date->getRelativeDate() }}</span>
 		</div>
 	@endforeach
 	{{ $shouts->links() }}
