@@ -43,7 +43,7 @@ HTML::macro('resourceDelete', function($resource, $id, $buttonValue)
 	if( Authority::can('delete', $resource, $id) )
 	{
 		$output = Form::open(array('route' => array($resource.'.destroy', $id), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?', 'class' => 'resource-destroy'));
-		$output .= Button::inverse_submit($buttonValue);
+		$output .= Button::inverse_submit($buttonValue, array('title' => 'Delete '.$resource));
 		$output .= Form::close();
 
 		return $output;
