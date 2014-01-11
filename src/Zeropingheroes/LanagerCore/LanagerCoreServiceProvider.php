@@ -27,6 +27,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		$this->app->register('Bootstrapper\BootstrapperServiceProvider');
 		$this->app->register('Zeropingheroes\SteamBrowserProtocol\SteamBrowserProtocolServiceProvider');
 		//$this->app->register('Profiler\ProfilerServiceProvider');
+		$this->app->register('ExpressiveDateServiceProvider');
 
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../filters.php';
