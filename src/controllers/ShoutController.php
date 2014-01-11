@@ -18,7 +18,9 @@ class ShoutController extends BaseController {
 	 */
 	public function index()
 	{
-		$shouts = Shout::orderBy('created_at', 'desc')->paginate(10);
+		$shouts = Shout::orderBy('pinned', 'desc')
+						->orderBy('created_at', 'desc')
+						->paginate(10);
 		return View::make('lanager-core::shout.index')
 					->with('title', 'Shouts')
 					->with('shouts', $shouts);
@@ -98,6 +100,22 @@ class ShoutController extends BaseController {
 	public function destroy($id)
 	{
 		Shout::destroy($id);
+		return Redirect::route('shout.index');
+	}
+
+	/**
+	 * Toggle the "pinned" flag on the shout.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function pin($id)
+	{
+		if( $shout = Shout::find($id))
+		{
+			$shout->pinned = !$shout->pinned;
+			$shout->save();
+		}
 		return Redirect::route('shout.index');
 	}
 

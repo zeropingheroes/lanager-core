@@ -12,6 +12,7 @@
 */
 
 Route::pattern('user', '[0-9]+');
+Route::pattern('shout', '[0-9]+');
 
 // User
 Route::get(
@@ -40,6 +41,11 @@ Route::group(array('before' => 'hasRole:SuperAdmin'), function()
 Route::resource('user', 'Zeropingheroes\LanagerCore\UserController');
 Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
 Route::resource('shout', 'Zeropingheroes\LanagerCore\ShoutController');
+Route::get(
+	'shout/pin/{shout}',
+	array('as' => 'shout.pin',
+		'uses' => 'Zeropingheroes\LanagerCore\ShoutController@pin')
+);
 
 // Default
 Route::get('/', array('before' => 'installed', function()

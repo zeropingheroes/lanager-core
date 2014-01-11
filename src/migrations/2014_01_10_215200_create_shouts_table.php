@@ -16,6 +16,7 @@ class CreateShoutsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->string('content');
+			$table->boolean('pinned');
 			$table->timestamps();
 			$table->foreign('user_id')->references('id')->on('users')->on_update('cascade')->on_delete('cascade');
 		});

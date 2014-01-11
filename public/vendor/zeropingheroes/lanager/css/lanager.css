@@ -189,3 +189,8 @@ form.shout-post .btn {
 span.shout-moderation {
 	margin-left: 15px;
 }
+
+div.shout-post-item i {
+	margin-right: 5px;
+	margin-top: 3px;
+}
