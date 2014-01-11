@@ -10,9 +10,10 @@
 */
 
 // Show validation errors wrapped in bootstrap style
-HTML::macro('validationErrors', function($errors)
+HTML::macro('validationErrors', function()
 {
-	if( $errors->count() > 0 )
+	$errors = Session::get('errors');
+	if( $errors )
 	{
 		return Alert::error(
 			'<strong>The following errors occurred</strong>'.

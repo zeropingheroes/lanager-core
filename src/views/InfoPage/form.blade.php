@@ -1,4 +1,4 @@
-{{ HTML::validationErrors($errors) }}
+{{ HTML::validationErrors() }}
 
 {{ Form::label('title', 'Title') }}
 {{ Form::text('title',NULL,array('placeholder' => 'The title of the page', 'maxlength' => 255)) }}
