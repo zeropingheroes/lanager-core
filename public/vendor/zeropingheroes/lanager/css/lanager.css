@@ -185,3 +185,7 @@ form.shout-post input {
 form.shout-post .btn {
 	float: right;
 }
+
+span.shout-moderation {
+	margin-left: 15px;
+}

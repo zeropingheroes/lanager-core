@@ -28,6 +28,10 @@ return array(
 				$authority->allow('manage', 'infoPage');
 			}
 
+			if( $user->hasRole('ShoutAdmin') ) 
+			{
+				$authority->allow('manage', 'shout');
+			}
 		}
 	}
 );

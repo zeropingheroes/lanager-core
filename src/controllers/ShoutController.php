@@ -97,7 +97,8 @@ class ShoutController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Shout::destroy($id);
+		return Redirect::route('shout.index');
 	}
 
 }
