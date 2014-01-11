@@ -10,6 +10,9 @@
 
 			<div class="nav-collapse collapse">
 				<ul class="nav">
+					<li class="{{ Request::is('shout*') ? 'active' : '' }}">
+						{{ link_to_route('shout.index', 'Shouts') }}
+					</li>
 					<li class="{{ Request::is('user*') ? 'active' : '' }}">
 						{{ link_to_route('user.index', 'People') }}
 					</li>

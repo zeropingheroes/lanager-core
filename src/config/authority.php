@@ -16,6 +16,8 @@ return array(
 		// If there is a user currently logged in, assign permissions based on roles
 		if( is_object($user) )
 		{
+			$authority->allow('create', 'shout');
+
 			if( $user->hasRole('SuperAdmin') ) 
 			{
 				$authority->allow('manage', 'all');

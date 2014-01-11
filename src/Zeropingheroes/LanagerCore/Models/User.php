@@ -87,4 +87,9 @@ class User extends BaseModel implements UserInterface
 		return str_replace('.jpg', '_full.jpg', $this->avatar);
 	}
 
+	public function shouts()
+	{
+		return $this->hasMany('Zeropingheroes\LanagerCore\Models\Shout');
+	}
+
 }

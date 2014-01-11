@@ -38,12 +38,11 @@ Route::group(array('before' => 'hasRole:SuperAdmin'), function()
 	);
 });
 Route::resource('user', 'Zeropingheroes\LanagerCore\UserController');
-
-// Info Page
 Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
+Route::resource('shout', 'Zeropingheroes\LanagerCore\ShoutController');
 
 // Default
 Route::get('/', array('before' => 'installed', function()
 {
-	return Redirect::to('infoPage');
+	return Redirect::to('shout');
 }));
