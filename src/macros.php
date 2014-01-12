@@ -26,14 +26,14 @@ HTML::macro('validationErrors', function()
 // Show "Create" button for a resource
 HTML::macro('resourceCreate', function($resource, $buttonValue)
 {
-	if( Authority::can('create', $resource) ) return Button::inverse_link(URL::route($resource.'.create'), $buttonValue);
+	if( Authority::can('create', $resource) ) return Button::link(URL::route($resource.'.create'), $buttonValue);
 });
 
 
 // Show "Edit" button for a specific resource
 HTML::macro('resourceUpdate', function($resource, $id, $buttonValue)
 {
-	if( Authority::can('update', $resource, $id) ) return Button::inverse_link(URL::route($resource.'.edit', array($resource => $id)), $buttonValue);
+	if( Authority::can('update', $resource, $id) ) return Button::link(URL::route($resource.'.edit', array($resource => $id)), $buttonValue);
 });
 
 
@@ -43,7 +43,7 @@ HTML::macro('resourceDelete', function($resource, $id, $buttonValue)
 	if( Authority::can('delete', $resource, $id) )
 	{
 		$output = Form::open(array('route' => array($resource.'.destroy', $id), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?', 'class' => 'resource-destroy'));
-		$output .= Button::inverse_submit($buttonValue, array('title' => 'Delete '.$resource));
+		$output .= Button::submit($buttonValue, array('title' => 'Delete '.$resource));
 		$output .= Form::close();
 
 		return $output;

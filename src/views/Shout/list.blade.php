@@ -4,21 +4,22 @@
 	@foreach ($shouts as $shout)
 		<?php $date = new ExpressiveDate($shout->created_at); ?>
 		<div class="shout-post-item">
-			<img src="{{ $shout->user->avatar }}">
-			{{ link_to_route('user.show', $shout->user->username, $shout->user->id) }}:
-			<span>{{{ $shout->content }}}</span>
+			<img src="{{ $shout->user->avatar }}" alt="Avatar">
+			{{ link_to_route('user.show', $shout->user->username, $shout->user->id) }}
 			@if( Authority::can('manage', 'shout'))
-				<span class="pull-right shout-moderation">
-					{{ Button::inverse_link(URL::route('shout.pin', array('shout' => $shout->id)), 'Pin') }}
+				<div class="shout-post-moderation pull-right">
+					{{ Button::link(URL::route('shout.pin', array('shout' => $shout->id)), 'Pin') }}
 					{{ HTML::resourceDelete('shout', $shout->id, 'Delete') }}
-				</span>
+				</div>
 			@endif
-			<span class="pull-right" title="{{ $date }}">
+			<span class="shout-post-time pull-right" title="{{ $date }}">
 				{{ $date->getRelativeDate() }}
 			</span>
 			@if ($shout->pinned)
-				<i class="icon-star icon-white pull-right" title="This post has been pinned"></i>
+				<span class="glyphicon glyphicon-star-empty pull-right" title="This post has been pinned"></span>
 			@endif
+			<div class="shout-post-item-content">{{{ $shout->content }}}</div>
+
 		</div>
 	@endforeach
 	{{ $shouts->links() }}

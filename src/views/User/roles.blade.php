@@ -9,7 +9,7 @@
 	{{ Form::labelled_checkbox('userRoles[]', $role->name, $role->id, $user->hasRole($role->name)) }}
 @endforeach
 
-{{ Form::actions( Button::inverse_submit('Submit') ) }}
+{{ Button::inverse_submit('Submit') }}
 
 {{ Form::close() }}
 

@@ -6,12 +6,12 @@
 	<h1>{{{ $user->username }}}</h1>
 	<ul class="user-profile-actions pull-right">
 		@if( Auth::check() && $user->id == Auth::user()->id )
-			<li>{{ Button::inverse_link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
+			<li>{{ Button::link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
 			<li>{{ HTML::resourceDelete('user',$user->id,'Delete Account') }}</li>
 		@else
-			<li>{{ Button::inverse_link(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
-			<li>{{ Button::inverse_link(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
-			<li>{{ Button::inverse_link('http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank')) }}</li>
+			<li>{{ Button::link(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
+			<li>{{ Button::link(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
+			<li>{{ Button::link('http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank')) }}</li>
 		@endif
 	</ul>
 </div>
@@ -44,7 +44,7 @@
 	@if( Authority::can( 'manage', 'user' ) )
 		<h2>Administration</h2>
 		<ul>
-			<li>{{ Button::inverse_link(URL::route('user.roles.edit', $user->id), 'Manage Roles' ) }}</li>
+			<li>{{ Button::link(URL::route('user.roles.edit', $user->id), 'Manage Roles' ) }}</li>
 		</ul>
 	@endif
 

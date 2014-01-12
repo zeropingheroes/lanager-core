@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>{{{ $title }}} :: LANager</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content>
+		<meta name="author" content>
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="packages/zeropingheroes/lanager-core/apple-touch-icon-152x152-precomposed.png">
+		
+		{{ HTML::style('packages/zeropingheroes/lanager-core/css/bootstrap-dark.min.css') }}
+		{{ HTML::style('packages/zeropingheroes/lanager-core/css/lanager.css') }}
 
-		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap.css') }}
-		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap-responsive.css') }}
-		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/zeropingheroes/lanager/css/lanager.css') }}
-
-		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/jquery/jquery-1.8.3.min.js') }}
-		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/js/bootstrap.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/rails/jquery-ujs/rails.js') }}
+		
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
 
 		<script type="text/javascript">
 			var siteUrl = '{{ url('/') }}';
@@ -26,7 +29,4 @@
   		</script>
 
 	</head>
-	<body>
-		<!--[if lt IE 7]>
-			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-		<![endif]-->
+	<body style>
