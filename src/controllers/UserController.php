@@ -186,7 +186,8 @@ class UserController extends BaseController {
 	{
 		if( $user = User::find($id) )
 		{
-			$user->roles()->sync(Input::get('userRoles'));
+			$userRoles = (is_array(Input::get('userRoles')) ? Input::get('userRoles') : array() );
+			$user->roles()->sync($userRoles);
 			return Redirect::route('user.roles.edit',array('user' => $user->id));
 		}
 		else
