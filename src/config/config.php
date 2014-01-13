@@ -31,4 +31,22 @@ return array(
 
 	'installationCompleted'	=> false,
 
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Flood Protection
+	|--------------------------------------------------------------------------
+	|
+	| You may limit how quickly a logged in user can post new data to the database
+	| to prevent spamming. Measured in seconds, and specific to the resource type
+	| 
+	|
+	*/
+
+	'floodProtect' => array(
+		'shouts' => 30,
+	),
+
+
 );
