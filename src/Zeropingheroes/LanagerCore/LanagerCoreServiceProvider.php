@@ -34,6 +34,7 @@ class LanagerCoreServiceProvider extends ServiceProvider {
 		include __DIR__.'/../../composers.php';
 		include __DIR__.'/../../macros.php';
 		include __DIR__.'/../../bindings.php';
+		include __DIR__.'/../../validations.php';
 
 	}
 
