@@ -159,41 +159,23 @@ div.user-profile-content ul {
    -------------------------------------------------------------------
 */
 /* wide form separated from posts */
-form.shout-post {
+form.shout-create {
 	width: 100%;
 	margin-bottom: 10px;
 }
 
 /* full width text input */
-form.shout-post input {
+form.shout-create input {
 	width: 1080px;
 }
 
 /* right aligned moderation buttons */
-div.shout-post-moderation {
+div.shout-moderation {
 	display: inline;
 	margin-left: 15px;
 }
 
-/* separate shout posts */
-div.shout-post-item {
-	margin-bottom: 20px;
-}
-
 /* de-emphasise timestamps */
-span.shout-post-time {
-	padding: 6px;
-	font-size: 80%;
-}
-
-/* align shout icon with text */
-div.shout-post-item span.glyphicon {
-	margin-right: 5px;
-	margin-top: 5px;
-}
-
-/* indent shout text and wrap long words*/ 
-div.shout-post-item-content {
-	margin-left: 40px;
-	word-wrap: break-word;
+span.shout-timestamp {
+	font-size: 85%;
 }
