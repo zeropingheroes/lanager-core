@@ -5,7 +5,7 @@ namespace Zeropingheroes\LanagerCore\Models;
 class Shout extends BaseModel {
 
 	public static $rules = array(
-		'content'		=> 'required|max:140|flood_protect',
+		'content'		=> 'required|max:140|flood_protect:shouts',
 	);
 	public function user()
 	{
