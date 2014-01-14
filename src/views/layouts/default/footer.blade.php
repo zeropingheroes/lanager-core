@@ -6,5 +6,6 @@
 		</div>
 		{{ HTML::script('packages/patricktalmadge/bootstrapper/js/jquery-1.10.2.min.js') }}
 		{{ HTML::script('packages/patricktalmadge/bootstrapper/js/bootstrap.min.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/rails/jquery-ujs/rails.js') }}
 	</body>
 </html>

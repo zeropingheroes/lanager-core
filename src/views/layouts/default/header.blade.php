@@ -11,8 +11,6 @@
 		
 		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap-dark.min.css') }}
 		{{ HTML::style('packages/zeropingheroes/lanager-core/css/lanager.css') }}
-
-		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/rails/jquery-ujs/rails.js') }}
 		
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
