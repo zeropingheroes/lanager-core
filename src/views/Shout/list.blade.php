@@ -28,8 +28,6 @@
 					</h4>
 					{{{ $shout->content }}}
 				</div>
-
 			</div>
 	@endforeach
-	{{ $shouts->links() }}
 @endif

@@ -32,6 +32,12 @@
 		@endif
 	</div>
 
+	@if( count($user->shouts) )
+		<?php $shouts = $user->shouts()->orderBy('created_at','desc')->take(Config::get('lanager-core::userProfile.shoutQuantity'))->get(); ?>
+		<h2>Shouts</h2>
+		@include('lanager-core::shout.list')
+	@endif
+
 	@if( count($user->roles) )
 		<h2>Roles</h2>
 		<ul>
