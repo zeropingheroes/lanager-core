@@ -45,6 +45,7 @@
 		<h2>Administration</h2>
 		<ul>
 			<li>{{ Button::link(URL::route('user.roles.edit', $user->id), 'Manage Roles' ) }}</li>
+			<li>{{ HTML::resourceDelete('user',$user->id,'Delete User') }}</li>
 		</ul>
 	@endif
 

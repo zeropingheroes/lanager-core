@@ -14,6 +14,7 @@ class UserController extends BaseController {
 	public function __construct(SteamUserRepositoryInterface $steamUsers)
 	{
 		$this->steamUsers = $steamUsers;
+		$this->beforeFilter('checkResourcePermission',array('only' => array('create', 'store', 'edit', 'update', 'destroy') ));
 	}
 
 
@@ -101,7 +102,8 @@ class UserController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+		return Redirect::route('user.index');
 	}
 
 	/**
