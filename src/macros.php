@@ -24,26 +24,28 @@ HTML::macro('validationErrors', function()
 
 
 // Show "Create" button for a resource
-HTML::macro('resourceCreate', function($resource, $buttonValue)
+HTML::macro('resourceCreate', function($resourceName, $buttonValue)
 {
-	if( Authority::can('create', $resource) ) return Button::link(URL::route($resource.'.create'), $buttonValue);
+	if( Authority::can('create', $resourceName) ) return Button::link(URL::route($resourceName.'.create'), $buttonValue);
 });
 
 
 // Show "Edit" button for a specific resource
-HTML::macro('resourceUpdate', function($resource, $id, $buttonValue)
+HTML::macro('resourceUpdate', function($resourceName, $resourceItem, $buttonValue)
 {
-	if( Authority::can('update', $resource, $id) ) return Button::link(URL::route($resource.'.edit', array($resource => $id)), $buttonValue);
+	$resourceItemId = (is_object($resourceItem) ? $resourceItem->id : $resourceItem);
+	if( Authority::can('update', $resourceName, $resourceItem) ) return Button::link(URL::route($resourceName.'.edit', array($resourceName => $resourceItemId)), $buttonValue);
 });
 
 
 // Show "Delete" button for a specific resource
-HTML::macro('resourceDelete', function($resource, $id, $buttonValue)
+HTML::macro('resourceDelete', function($resourceName, $resourceItem, $buttonValue)
 {
-	if( Authority::can('delete', $resource, $id) )
+	$resourceItemId = (is_object($resourceItem) ? $resourceItem->id : $resourceItem);
+	if( Authority::can('delete', $resourceName, $resourceItem) )
 	{
-		$output = Form::open(array('route' => array($resource.'.destroy', $id), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?', 'class' => 'resource-destroy'));
-		$output .= Button::submit($buttonValue, array('title' => 'Delete '.$resource));
+		$output = Form::open(array('route' => array($resourceName.'.destroy', $resourceItemId), 'method' => 'DELETE', 'data-confirm' => 'Are you sure?', 'class' => 'resource-destroy'));
+		$output .= Button::submit($buttonValue, array('title' => 'Delete '.$resourceName));
 		$output .= Form::close();
 
 		return $output;

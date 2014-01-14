@@ -7,7 +7,7 @@
 	<ul class="user-profile-actions pull-right">
 		@if( Auth::check() && $user->id == Auth::user()->id )
 			<li>{{ Button::link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
-			<li>{{ HTML::resourceDelete('user',$user->id,'Delete Account') }}</li>
+			<li>{{ HTML::resourceDelete('user',$user,'Delete Account') }}</li>
 		@else
 			<li>{{ Button::link(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
 			<li>{{ Button::link(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
@@ -41,11 +41,11 @@
 		</ul>
 	@endif
 
-	@if( Authority::can( 'manage', 'user' ) )
+	@if( Authority::can( 'manage', 'user', $user ) )
 		<h2>Administration</h2>
 		<ul>
 			<li>{{ Button::link(URL::route('user.roles.edit', $user->id), 'Manage Roles' ) }}</li>
-			<li>{{ HTML::resourceDelete('user',$user->id,'Delete User') }}</li>
+			<li>{{ HTML::resourceDelete('user',$user,'Delete User') }}</li>
 		</ul>
 	@endif
 

@@ -11,26 +11,38 @@ return array(
 		$authority->addAlias('manage', array('create', 'read', 'update', 'delete'));
 
 		// Get the currently logged in user
-		$user = $authority->getCurrentUser();
+		$self = $authority->getCurrentUser();
 
 		// If there is a user currently logged in, assign permissions based on roles
-		if( is_object($user) )
+		if( is_object($self) )
 		{
 			$authority->allow('create', 'shout');
 
-			if( $user->hasRole('SuperAdmin') ) 
-			{
-				$authority->allow('manage', 'all');
-			}
+			$authority->allow('delete', 'user', function($self, $user){
+				if(is_object($user))
+				{
+					return $self->getCurrentUser()->id === $user->id; // passed entire user object
+				}
+				else
+				{
+					return $self->getCurrentUser()->id === $user; // just passed user id
+				}
+			});
 			
-			if( $user->hasRole('InfoPageAdmin') ) 
+			if( $self->hasRole('InfoPageAdmin') ) 
 			{
 				$authority->allow('manage', 'infoPage');
 			}
 
-			if( $user->hasRole('ShoutAdmin') ) 
+			if( $self->hasRole('ShoutAdmin') ) 
 			{
 				$authority->allow('manage', 'shout');
+			}
+
+			// Must be at bottom
+			if( $self->hasRole('SuperAdmin') ) 
+			{
+				$authority->allow('manage', 'all');
 			}
 		}
 	}
