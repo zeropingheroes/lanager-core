@@ -26,7 +26,8 @@
             "src/migrations",
             "src/seeds",
             "src/controllers",
-            "src/commands"
+            "src/commands",
+            "src/validators"
         ],
         "psr-0": {
             "Zeropingheroes\\LanagerCore\\": "src/"
