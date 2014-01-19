@@ -3,11 +3,21 @@ namespace Zeropingheroes\LanagerCore\Models;
 
 use Illuminate\Auth\UserInterface;
 
-class SteamState extends BaseModel
+class State extends BaseModel
 {
 	public function user()
 	{
 		return $this->belongsTo('Zeropingheroes\LanagerCore\Models\User');
+	}
+
+	public function application()
+	{
+		return $this->belongsTo('Zeropingheroes\LanagerCore\Models\Application');
+	}
+
+	public function server()
+	{
+		return $this->belongsTo('Zeropingheroes\LanagerCore\Models\Server');
 	}
 
 	/**
@@ -17,10 +27,10 @@ class SteamState extends BaseModel
 	 */
 	public function getStatus()
 	{
-		switch ($this->status_code)
+		switch ($this->status)
 		{
 			case '1':
-				if( !empty($this->app_id) ) return 'In Game';
+				if( !empty($this->application_id) ) return 'In Game'; // Online AND In-game != Online AND away
 				return 'Online';
 			case '2':
 				return 'Busy';

@@ -1,8 +1,27 @@
 @extends('lanager-core::layouts.default')
 @section('content')
-<?php $steamState = $user->steamStates()->latest(); ?>
+
+<?php
+$state = $user->states()->latest();
+if( $state->first() )
+{
+	if( isset($state->application->steam_app_id) )
+	{
+		$avatarClass = 'in-game';
+	}
+	elseif( $state->status )
+	{
+		$avatarClass = 'online';
+	}
+	else
+	{
+		$avatarClass = 'offline';
+	}
+}
+?>
+
 <div class="user-profile-header">
-	<img src="{{ $user->getLargeAvatarUrl() }}">
+	<img src="{{ $user->getLargeAvatarUrl() }}" class="avatar {{ $avatarClass }}" alt="Avatar">
 	<h1>{{{ $user->username }}}</h1>
 	<ul class="user-profile-actions pull-right">
 		@if( Auth::check() && $user->id == Auth::user()->id )
@@ -15,18 +34,19 @@
 		@endif
 	</ul>
 </div>
+
 <div class="user-profile-content">
 	<div class="user-status pull-right">
-		@if(count($user->steamStates))
-			{{ $steamState->getStatus() }}
-			@if( is_numeric($steamState->app_id) )
+		@if( $state->first() )
+			{{ $state->getStatus() }}
+			@if( isset( $state->application->steam_app_id) )
 				:
-				<a href="{{ SteamBrowserProtocol::viewAppInStore($steamState->app_id) }}">
-					{{{ $steamState->app_name }}}<br>
-					<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $steamState->app_id }}/capsule_184x69.jpg"></a>
+				<a href="{{ SteamBrowserProtocol::viewAppInStore($state->application->steam_app_id) }}">
+					{{{ $state->application->name }}}<br>
+					<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $state->application->steam_app_id }}/capsule_184x69.jpg" alt="Game Logo"></a>
 				<br>
-				@if( !empty($steamState->server_ip) )
-					{{ link_to(SteamBrowserProtocol::connectToServer($steamState->server_ip), 'Join') }}
+				@if( isset( $state->server->address ) )
+					{{ link_to( SteamBrowserProtocol::connectToServer( $state->server->getFullAddress() ), $state->server->getFullAddress() ) }}
 				@endif
 			@endif
 		@endif

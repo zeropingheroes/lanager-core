@@ -13,8 +13,30 @@
 		<div class="navbar-header navbar-right">
 			<ul class="nav navbar-nav">
 				@if(Auth::check())
+					<?php
+					$state = Auth::user()->states()->latest();
+					if( $state->first() )
+					{
+						$avatarTitle = $state->getStatus();
+						if( isset($state->application->steam_app_id) )
+						{
+							$avatarClass = 'in-game';
+							$avatarTitle = 'In-Game: '.$state->application->name;
+						}
+						elseif( $state->status )
+						{
+							$avatarClass = 'online';
+						}
+						else
+						{
+							$avatarClass = 'offline';
+						}
+					}
+					?>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">	<img src="{{ Auth::user()->avatar }}" alt="Avatar"> {{{ (Auth::user()->username) }}} <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+							<img src="{{ Auth::user()->avatar }}" class="avatar {{ $avatarClass }}" title="{{{ $avatarTitle }}}" alt="Avatar"> {{{ (Auth::user()->username) }}} <b class="caret"></b>
+						</a>
 						<ul class="dropdown-menu">
 							<li>{{ link_to_route('user.show', 'Profile',  Auth::user()->id) }}</li>
 							<li>{{ link_to_route('user.logout', 'Log Out') }}</li>

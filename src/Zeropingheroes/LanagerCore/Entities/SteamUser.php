@@ -21,6 +21,7 @@ class SteamUser {
 	public $current_app_id;
 	public $current_app_name;
 	public $current_server_ip;
+	public $current_server_port;
 
 
 	/*

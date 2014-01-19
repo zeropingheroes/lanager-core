@@ -51,14 +51,19 @@ class LocomotiveSteamUserRepository implements SteamUserRepositoryInterface {
 			$steamUser->username	= $profile->personaname;
 
 			// Optional
-			if (isset($profile->realname))			$steamUser->real_name			= $profile->realname;
+			if (isset($profile->realname))			$steamUser->real_name				= $profile->realname;
 			if (isset($profile->timecreated))		$steamUser->creation_time			= $profile->timecreated;
 			if (isset($profile->avatar))			$steamUser->avatar_url				= $profile->avatar;
 			if (isset($profile->primaryclanid))		$steamUser->primary_group_id		= $profile->primaryclanid;
 			if (isset($profile->personastate))		$steamUser->status					= $profile->personastate;
 			if (isset($profile->lastlogoff))		$steamUser->last_online_time		= $profile->lastlogoff;
 			if (isset($profile->gameextrainfo))		$steamUser->current_app_name		= $profile->gameextrainfo;
-			if (isset($profile->gameserverip))		$steamUser->current_server_ip		= $profile->gameserverip;
+			if (isset($profile->gameserverip))
+			{
+				$address = explode(':', $profile->gameserverip);
+				$steamUser->current_server_ip	= $address[0];
+				$steamUser->current_server_port	= $address[1];
+			}
 			if (isset($profile->loccityid))			$steamUser->location_city_id		= $profile->loccityid;
 			if (isset($profile->loccountrycode))	$steamUser->location_country_code	= $profile->loccountrycode;
 			if (isset($profile->locstatecode))		$steamUser->location_state_code		= $profile->locstatecode;
