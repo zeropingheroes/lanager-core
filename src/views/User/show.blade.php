@@ -1,36 +1,18 @@
 @extends('lanager-core::layouts.default')
 @section('content')
 
-<?php
-$state = $user->states()->latest();
-if( $state->first() )
-{
-	if( isset($state->application->steam_app_id) )
-	{
-		$avatarClass = 'in-game';
-	}
-	elseif( $state->status )
-	{
-		$avatarClass = 'online';
-	}
-	else
-	{
-		$avatarClass = 'offline';
-	}
-}
-?>
-
+<?php $state = $user->states()->latest(); ?>
 <div class="user-profile-header">
-	<img src="{{ $user->getLargeAvatarUrl() }}" class="avatar {{ $avatarClass }}" alt="Avatar">
+	{{ HTML::userAvatar($user, 'large') }}
 	<h1>{{{ $user->username }}}</h1>
 	<ul class="user-profile-actions pull-right">
 		@if( Auth::check() && $user->id == Auth::user()->id )
-			<li>{{ Button::link(SteamBrowserProtocol::openSteamPage('SteamIDEditPage'),'Edit Profile') }}</li>
-			<li>{{ HTML::resourceDelete('user',$user,'Delete Account') }}</li>
+			<li>{{ Button::link( SteamBrowserProtocol::openSteamPage('SteamIDEditPage'), 'Edit Profile' ) }}</li>
+			<li>{{ HTML::resourceDelete( 'user', $user, 'Delete Account' ) }}</li>
 		@else
-			<li>{{ Button::link(SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add') }}</li>
-			<li>{{ Button::link(SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message') }}</li>
-			<li>{{ Button::link('http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank')) }}</li>
+			<li>{{ Button::link( SteamBrowserProtocol::addFriend($user->steam_id_64), 'Add' ) }}</li>
+			<li>{{ Button::link( SteamBrowserProtocol::messageFriend($user->steam_id_64), 'Message' ) }}</li>
+			<li>{{ Button::link( 'http://www.steamcommunity.com/profiles/'.$user->steam_id_64, 'View Steam Profile', array('target' => '_blank') ) }}</li>
 		@endif
 	</ul>
 </div>

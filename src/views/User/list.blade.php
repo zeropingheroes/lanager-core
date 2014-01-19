@@ -3,53 +3,42 @@
 	<h2>{{{ $title }}}</h2>
 	@if(count($users))
 		{{ Table::open() }}
-
 		<?php
-			$i = 0;
-			foreach( $users as $user )
+		foreach( $users as $user )
+		{
+			// Reset variables
+			$status	= NULL;
+			$application = NULL;
+			$server = NULL;
+
+			// Get user's most recent state
+			$state = $user->states()->latest();
+			
+			// If user has a state
+			if( $state->first() )
 			{
-				// Reset variables
-				$status	= NULL;
-				$application = NULL;
-				$server = NULL;
-				$avatarClass = 'offline';
-
-				// Get user's most recent state
-				$state = $user->states()->latest();
+				$status = $state->getStatus();
 				
-				// If user has a state
-				if( $state->first() )
+				// If user is running a Steam application
+				if ( isset($state->application->steam_app_id) )
 				{
-					$status = $state->getStatus();
-					if( $state->status )
-					{
-						$avatarClass = 'online';
-					}
-					// If user is running a Steam application
-					if ( isset($state->application->steam_app_id) )
-					{
-						$application = link_to( SteamBrowserProtocol::viewAppInStore( $state->application->steam_app_id ), $state->application->name );
-						$avatarClass = 'in-game';
+					$application = link_to( SteamBrowserProtocol::viewAppInStore( $state->application->steam_app_id ), $state->application->name );
 
-						// If user is connected to a server 
-						if ( isset($state->server->address) )
-						{
-							$server = link_to( SteamBrowserProtocol::connectToServer( $state->server->getFullAddress() ), $state->server->getFullAddress() );
-						}
+					// If user is connected to a server 
+					if ( isset($state->server->address) )
+					{
+						$server = link_to( SteamBrowserProtocol::connectToServer( $state->server->getFullAddress() ), $state->server->getFullAddress() );
 					}
 				}
-
-				$tableBody[] = array(
-					'user'			=> '<a class="pull-left" href="'.URL::route('user.show', $user->id).'">
-											<img src="'.$user->avatar.'" class="avatar '.$avatarClass.'" alt="Avatar"> '.$user->username.'
-										</a>',
-					'status'		=> $status,
-					'application'	=> $application,
-					'server'		=> $server,
-				);
-
-				$i++;
 			}
+
+			$tableBody[] = array(
+				'user'			=> '<a class="pull-left" href="'.URL::route('user.show', $user->id).'">'.HTML::userAvatar($user).' '.$user->username.'</a>',
+				'status'		=> $status,
+				'application'	=> $application,
+				'server'		=> $server,
+			);
+		}
 		?>
 		{{ Table::body($tableBody) }}
 		{{ Table::close() }}

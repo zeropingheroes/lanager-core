@@ -52,7 +52,54 @@ HTML::macro('resourceDelete', function($resourceName, $resourceItem, $buttonValu
 	}
 });
 
-
+// Show user avatar with status info
+HTML::macro('userAvatar', function($user, $size = 'small', $classes = array())
+{
+	if( ! is_array($classes) ) $classes = array($classes);
+	$classes[] = 'avatar';
+	$classes[] = 'avatar-'.$size;
+	
+	$state = $user->states()->latest();
+	
+	if( $state->first() )
+	{
+		if( isset($state->application->steam_app_id) )
+		{
+			$classes[] = 'in-game';
+			$title = 'In-Game: '.e($state->application->name);
+		}
+		elseif( $state->status )
+		{
+			$classes[] = 'online';
+			$title = $state->getStatus();
+		}
+		else
+		{
+			$classes[] = 'offline';
+			$title = $state->getStatus();
+		}
+	}
+	else
+	{
+		$classes[] = 'offline';
+		$title = 'Status unknown';
+	}
+	switch($size)
+	{
+		case 'small':
+			$src = $user->avatar;
+			break;
+		case 'medium':
+			$src = $user->getMediumAvatarUrl();
+			break;
+		case 'large':
+			$src = $user->getLargeAvatarUrl();
+			break;
+		default: $src = $user->avatar;
+	}
+	$classes = implode(' ', $classes);
+	return'<img	class="'.$classes.'" src="'.$src.'" alt="Avatar" title="'.$title.'">';
+});
 
 /*
 |--------------------------------------------------------------------------

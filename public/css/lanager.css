@@ -40,6 +40,30 @@ table.table tbody tr td {
 	display: inline;
 }
 
+/* user avatars mimic steam */
+img.avatar {
+	border: 1px solid;
+}
+img.avatar-small {
+	border-width: 1px;
+}
+img.avatar-medium {
+	border-width: 2px;
+}
+img.avatar-large {
+	border-width: 3px;
+}
+img.avatar.in-game {
+	border-color: #19A601;
+}
+img.avatar.online {
+	border-color: #01ABFE;
+}
+img.avatar.offline {
+	border-color: #333;
+}
+
+/* footer separated from content */
 footer {
 	border-top: 1px solid #333;
 	padding-top: 5px;
@@ -99,7 +123,7 @@ ul.dropdown-menu {
 
 /* snug logged in user menu in navbar */
 li.dropdown a.user-menu {
-	padding: 10px;
+	padding: 7px 10px;
 	height: 46px;
 	width: 160px;
 }

@@ -2,39 +2,10 @@
 	<p>No shouts to show!</p>
 @else
 	@foreach ($shouts as $shout)
-		<?php
-			$date = new ExpressiveDate($shout->created_at);
-			$avatarClass = 'offline';
-			$avatarTitle = NULL;
-		?>
+		<?php $date = new ExpressiveDate($shout->created_at); ?>
 		<div class="media">
 			<a class="pull-left" href="{{ URL::route('user.show', $shout->user->id) }}">
-				<?php 
-					$state = $shout->user->states()->latest();
-					if( $state->first() )
-					{
-						// If user is in-game alter their avatar
-						if( isset( $state->application->name ) )
-						{
-							$avatarClass = 'in-game';
-							$avatarTitle = 'In-Game: '.e($state->application->name);
-						}
-						else
-						{
-							if( $state->status )
-							{
-								$avatarClass = 'online';
-							}
-							$avatarTitle = $state->getStatus();
-						}
-					}
-				?>
-				<img
-					class="media-object avatar {{ $avatarClass }}"
-					src="{{ $shout->user->avatar }}"
-					alt="Avatar"
-					title="{{ $avatarTitle }}"
-					>
+				{{ HTML::userAvatar($shout->user, 'small', 'media-object') }}
 			</a>
 			@if( Authority::can('manage', 'shout'))
 				<div class="shout-moderation pull-right">
