@@ -2,9 +2,11 @@
 namespace Zeropingheroes\LanagerCore\Models;
 
 use Illuminate\Auth\UserInterface;
+use Config;
 
 class State extends BaseModel
 {
+	
 	public function user()
 	{
 		return $this->belongsTo('Zeropingheroes\LanagerCore\Models\User');
@@ -55,6 +57,8 @@ class State extends BaseModel
 	 */
 	public function scopeLatest($query)
 	{
-		return $query->orderBy('created_at', 'desc')->first();
+		return $query->orderBy('created_at', 'desc')
+					->where('created_at', '>=', date('Y-m-d H:i:s',time()-Config::get('lanager-core::states.maximumAge')));
 	}
+
 }

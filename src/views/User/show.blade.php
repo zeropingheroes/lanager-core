@@ -1,7 +1,7 @@
 @extends('lanager-core::layouts.default')
 @section('content')
 
-<?php $state = $user->states()->latest(); ?>
+<?php $state = $user->states()->latest()->first(); ?>
 <div class="user-profile-header">
 	{{ HTML::userAvatar($user, 'large') }}
 	<h1>{{{ $user->username }}}</h1>
@@ -19,13 +19,14 @@
 
 <div class="user-profile-content">
 	<div class="user-status pull-right">
-		@if( $state->first() )
+		@if( count($state) )
 			{{ $state->getStatus() }}
 			@if( isset( $state->application->steam_app_id) )
 				:
 				<a href="{{ SteamBrowserProtocol::viewAppInStore($state->application->steam_app_id) }}">
 					{{{ $state->application->name }}}<br>
-					<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $state->application->steam_app_id }}/capsule_184x69.jpg" alt="Game Logo"></a>
+					<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $state->application->steam_app_id }}/capsule_184x69.jpg" alt="Game Logo">
+				</a>
 				<br>
 				@if( isset( $state->server->address ) )
 					{{ link_to( SteamBrowserProtocol::connectToServer( $state->server->getFullAddress() ), $state->server->getFullAddress() ) }}

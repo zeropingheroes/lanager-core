@@ -39,12 +39,23 @@ Route::group(array('before' => 'hasRole:SuperAdmin'), function()
 	);
 });
 Route::resource('user', 'Zeropingheroes\LanagerCore\UserController');
+
+// Info Page
 Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
+
+// Shout
 Route::resource('shout', 'Zeropingheroes\LanagerCore\ShoutController');
 Route::get(
 	'shout/pin/{shout}',
 	array('as' => 'shout.pin',
 		'uses' => 'Zeropingheroes\LanagerCore\ShoutController@pin')
+);
+
+// Statistics
+Route::get(
+	'statistics/applications/current-usage',
+	array('as' => 'statistics.applications.current-usage',
+		'uses' => 'Zeropingheroes\LanagerCore\StateController@currentApplicationUsage')
 );
 
 // Default

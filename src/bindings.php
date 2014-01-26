@@ -14,3 +14,8 @@ App::bind(
 	'Zeropingheroes\LanagerCore\Repositories\SteamUserRepositoryInterface',
 	'Zeropingheroes\LanagerCore\Repositories\LocomotiveSteamUserRepository'
 	);
+
+App::bind(
+	'Zeropingheroes\LanagerCore\Repositories\StateRepositoryInterface',
+	'Zeropingheroes\LanagerCore\Repositories\EloquentStateRepository'
+	);

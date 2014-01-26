@@ -59,11 +59,11 @@ HTML::macro('userAvatar', function($user, $size = 'small', $classes = array())
 	$classes[] = 'avatar';
 	$classes[] = 'avatar-'.$size;
 	
-	$state = $user->states()->latest();
+	$state = $user->states()->latest()->first();
 	
-	if( $state->first() )
+	if( count($state) )
 	{
-		if( isset($state->application->steam_app_id) )
+		if( isset($state->application_id) )
 		{
 			$classes[] = 'in-game';
 			$title = 'In-Game: '.e($state->application->name);

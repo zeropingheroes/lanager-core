@@ -50,6 +50,9 @@ class CreateStatesTable extends Migration {
 				->on('servers')
 				->onUpdate('cascade')
 				->onDelete('set null');
+
+			// Indexes
+			$table->index(array('user_id', 'created_at'));
 		});
 	}
 

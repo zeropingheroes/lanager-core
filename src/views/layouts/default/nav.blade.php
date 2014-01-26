@@ -37,6 +37,9 @@
 				<li class="{{ Request::is('user*') ? 'active' : '' }}">
 					{{ link_to_route('user.index', 'People') }}
 				</li>
+				<li class="{{ Request::is('statistics/applications/current-usage*') ? 'active' : '' }}">
+					{{ link_to_route('statistics.applications.current-usage', 'Games') }}
+				</li>
 				@include('lanager-core::layouts.default.info')
 			</ul>
 		</div>

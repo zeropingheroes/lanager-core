@@ -203,3 +203,19 @@ div.shout-moderation {
 span.shout-timestamp {
 	font-size: 85%;
 }
+
+/* -------------------------------------------------------------------
+   APPLICATION - USAGE
+   -------------------------------------------------------------------
+*/
+
+/* snug logo size */
+table.application-usage td.column-application {
+	width: 184px;
+}
+/* easy to read user count */
+table.application-usage td.column-user-count {
+	font-size: 200%;
+	font-weight: bold;
+	padding: 0px 30px;
+}

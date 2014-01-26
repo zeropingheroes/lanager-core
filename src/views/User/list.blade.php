@@ -12,10 +12,10 @@
 			$server = NULL;
 
 			// Get user's most recent state
-			$state = $user->states()->latest();
+			$state = $user->states()->latest()->first();
 			
 			// If user has a state
-			if( $state->first() )
+			if( count($state) )
 			{
 				$status = $state->getStatus();
 				
