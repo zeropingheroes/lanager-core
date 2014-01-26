@@ -18,7 +18,8 @@ class ShoutController extends BaseController {
 	 */
 	public function index()
 	{
-		$shouts = Shout::orderBy('pinned', 'desc')
+		$shouts = Shout::with('user', 'user.roles')
+						->orderBy('pinned', 'desc')
 						->orderBy('created_at', 'desc')
 						->paginate(10);
 		return View::make('lanager-core::shout.index')
