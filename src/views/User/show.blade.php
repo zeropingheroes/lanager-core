@@ -25,7 +25,7 @@
 				:
 				<a href="{{ SteamBrowserProtocol::viewAppInStore($state->application->steam_app_id) }}">
 					{{{ $state->application->name }}}<br>
-					<img src="http://cdn.steampowered.com/v/gfx/apps/{{ $state->application->steam_app_id }}/capsule_184x69.jpg" alt="Game Logo">
+					<img src="{{ $state->application->getLogo() }}" alt="Game Logo">
 				</a>
 				<br>
 				@if( isset( $state->server->address ) )

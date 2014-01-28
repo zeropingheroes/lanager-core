@@ -86,6 +86,7 @@ class EloquentStateRepository implements StateRepositoryInterface {
 					'id'				=> $item['application']->id,
 					'name'				=> $item['application']->name,
 					'steam_app_id'		=> $item['application']->steam_app_id,
+					'logo'				=> $item['application']->getLogo(),
 					'users'				=> $item['users'],
 					);
 			}

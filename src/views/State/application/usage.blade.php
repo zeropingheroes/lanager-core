@@ -16,7 +16,7 @@
 			}
 
 			$application = '<a href="'.SteamBrowserProtocol::viewAppInStore($application['steam_app_id']).'">
-					<img src="http://cdn.steampowered.com/v/gfx/apps/'.$application['steam_app_id'].'/capsule_184x69.jpg" alt="Game Logo" title="'.$application['name'].'"></a>';
+					<img src="'.$application['logo'].'" alt="Game Logo" title="'.$application['name'].'"></a>';
 
 			$tableBody[] = array(
 				'application'	=> $application,
