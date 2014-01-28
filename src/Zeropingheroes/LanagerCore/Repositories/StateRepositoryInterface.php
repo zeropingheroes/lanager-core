@@ -18,4 +18,11 @@ interface StateRepositoryInterface {
 	 */
 	public function getCurrentApplicationUsage();
 
+	/**
+	 * Get servers currently being used by users
+	 *
+	 * @return array
+	 */
+	public function getCurrentServerUsage();
+
 }

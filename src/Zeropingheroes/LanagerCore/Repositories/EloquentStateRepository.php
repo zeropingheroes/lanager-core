@@ -103,4 +103,50 @@ class EloquentStateRepository implements StateRepositoryInterface {
 			return NULL;
 		}
 	}
+
+
+	/**
+	 * Get applications currently being used by users
+	 *
+	 * @return array
+	 */
+	public function getCurrentServerUsage()
+	{
+		$states = $this->currentStates()->whereNotNull('states.server_id')->get();
+
+		if( count($states) )
+		{
+			// Collect and combine states for the same server
+			foreach($states as $state)
+			{
+				$usage[$state->server_id]['server'] = $state->server;
+				$usage[$state->server_id]['users'][] = $state->user;
+			}
+
+			// Build clean array of servers
+			foreach($usage as $item)
+			{
+				$servers[] = array(
+					'id'				=> $item['server']->id,
+					'address'			=> $item['server']->address,
+					'port'				=> $item['server']->port,
+					'application'		=> $item['server']->application,
+					'users'				=> $item['users'],
+					);
+			}
+
+			// Sort applications array by user count, in decending order
+			usort($servers, function($a, $b) {
+				return count($b['users']) - count($a['users']);
+			});
+
+			return $servers;
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+
+
 }

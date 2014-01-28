@@ -57,6 +57,11 @@ Route::get(
 	array('as' => 'statistics.applications.current-usage',
 		'uses' => 'Zeropingheroes\LanagerCore\StateController@currentApplicationUsage')
 );
+Route::get(
+	'statistics/servers/current-usage',
+	array('as' => 'statistics.servers.current-usage',
+		'uses' => 'Zeropingheroes\LanagerCore\StateController@currentServerUsage')
+);
 
 // Default
 Route::get('/', array('before' => 'installed', function()

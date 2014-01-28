@@ -25,4 +25,17 @@ class StateController extends BaseController {
 					->with('applications',$applications);
 	}
 
+	/**
+	 * Display servers currently in use.
+	 *
+	 * @return Response
+	 */
+	public function currentServerUsage()
+	{
+		$servers = $this->states->getCurrentServerUsage();
+		return View::make('lanager-core::state.server.usage')
+					->with('title','Game Servers Currently Being Used')
+					->with('servers',$servers);
+	}
+
 }

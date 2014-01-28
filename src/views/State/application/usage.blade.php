@@ -3,7 +3,7 @@
 	<h2>{{{ $title }}}</h2>
 @if(count($applications))
 	
-	{{ Table::open(array('class' => 'application-usage')) }}
+	{{ Table::open(array('class' => 'state-usage')) }}
 
 	<?php
 		foreach ( $applications as $application )
