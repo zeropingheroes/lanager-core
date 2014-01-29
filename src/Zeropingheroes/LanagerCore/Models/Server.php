@@ -1,6 +1,7 @@
 <?php
 namespace Zeropingheroes\LanagerCore\Models;
 
+use SteamBrowserProtocol;
 
 class Server extends BaseModel {
 	
@@ -23,6 +24,16 @@ class Server extends BaseModel {
 		if( $this->address )
 		{
 			return $this->address;
+			// Todo: add support for default application ports
 		}
+	}
+
+	public function getUrl()
+	{
+		if( ! empty($this->application->steam_app_id) )
+		{
+			return SteamBrowserProtocol::connectToServer($this->getFullAddress());
+		}
+		// Todo: add support for non-steam app connection URLs
 	}
 }

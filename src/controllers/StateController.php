@@ -20,9 +20,9 @@ class StateController extends BaseController {
 	public function currentApplicationUsage()
 	{
 		$applications = $this->states->getCurrentApplicationUsage();
-		return View::make('lanager-core::state.application.usage')
+		return View::make('lanager-core::state.usage')
 					->with('title','Games Currently Being Played')
-					->with('applications',$applications);
+					->with('itemsInUse',$applications);
 	}
 
 	/**
@@ -33,9 +33,9 @@ class StateController extends BaseController {
 	public function currentServerUsage()
 	{
 		$servers = $this->states->getCurrentServerUsage();
-		return View::make('lanager-core::state.server.usage')
+		return View::make('lanager-core::state.usage')
 					->with('title','Game Servers Currently Being Used')
-					->with('servers',$servers);
+					->with('itemsInUse',$servers);
 	}
 
 }

@@ -205,16 +205,16 @@ span.shout-timestamp {
 }
 
 /* -------------------------------------------------------------------
-   STATES - USAGE
+   STATES - CURRENT USAGE
    -------------------------------------------------------------------
 */
 
 /* snug logo size */
-table.state-usage td.column-application {
+table.states-current-usage td.column-application {
 	width: 184px;
 }
 /* easy to read user count */
-table.state-usage td.column-user-count {
+table.states-current-usage td.column-user-count {
 	font-size: 200%;
 	font-weight: bold;
 	padding: 0px 30px;

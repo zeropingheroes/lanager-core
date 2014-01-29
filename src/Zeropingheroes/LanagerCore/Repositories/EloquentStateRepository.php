@@ -83,11 +83,8 @@ class EloquentStateRepository implements StateRepositoryInterface {
 			foreach($usage as $item)
 			{
 				$applications[] = array(
-					'id'				=> $item['application']->id,
-					'name'				=> $item['application']->name,
-					'steam_app_id'		=> $item['application']->steam_app_id,
-					'logo'				=> $item['application']->getLogo(),
-					'users'				=> $item['users'],
+					'application'	=> $item['application'],
+					'users'			=> $item['users'],
 					);
 			}
 
@@ -120,6 +117,7 @@ class EloquentStateRepository implements StateRepositoryInterface {
 			foreach($states as $state)
 			{
 				$usage[$state->server_id]['server'] = $state->server;
+				$usage[$state->server_id]['application'] = $state->application;
 				$usage[$state->server_id]['users'][] = $state->user;
 			}
 
@@ -127,11 +125,9 @@ class EloquentStateRepository implements StateRepositoryInterface {
 			foreach($usage as $item)
 			{
 				$servers[] = array(
-					'id'				=> $item['server']->id,
-					'address'			=> $item['server']->address,
-					'port'				=> $item['server']->port,
-					'application'		=> $item['server']->application,
-					'users'				=> $item['users'],
+					'server'		=> $item['server'],
+					'application'	=> $item['application'],
+					'users'			=> $item['users'],
 					);
 			}
 
