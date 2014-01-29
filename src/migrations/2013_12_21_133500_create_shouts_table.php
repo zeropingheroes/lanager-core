@@ -18,7 +18,7 @@ class CreateShoutsTable extends Migration {
 			$table->string('content');
 			$table->boolean('pinned');
 			$table->timestamps();
-			$table->foreign('user_id')->references('id')->on('users')->on_update('cascade')->on_delete('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
