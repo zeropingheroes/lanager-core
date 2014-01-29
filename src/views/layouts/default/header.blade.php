@@ -8,6 +8,7 @@
 		<meta name="description" content>
 		<meta name="author" content>
 		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="packages/zeropingheroes/lanager-core/apple-touch-icon-152x152-precomposed.png">
+		<link rel="shortcut icon" href="favicon.ico" />
 		
 		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap-dark.min.css') }}
 		{{ HTML::style('packages/zeropingheroes/lanager-core/css/lanager.css') }}
