@@ -1,7 +1,7 @@
 <?php
 namespace Zeropingheroes\LanagerCore\Models;
 
-use \LocomotiveTools;
+use Tsukanov\SteamLocomotive\LocomotiveTools;
 
 class Application extends BaseModel {
 

@@ -3,7 +3,7 @@ namespace Zeropingheroes\LanagerCore\Repositories;
 
 use Config;
 use Zeropingheroes\LanagerCore\Entities\SteamApp;
-use \Locomotive;
+use Tsukanov\SteamLocomotive\Locomotive;
 
 class LocomotiveSteamAppRepository implements SteamAppRepositoryInterface {
 
