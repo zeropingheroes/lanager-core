@@ -44,6 +44,7 @@
 					{{ link_to_route('statistics.servers.current-usage', 'Servers') }}
 				</li>
 				@include('lanager-core::layouts.default.info')
+				@include('lanager-core::layouts.default.links')
 			</ul>
 		</div>
 	</div>
