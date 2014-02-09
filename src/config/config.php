@@ -81,4 +81,17 @@ return array(
 		'maximumAge' => 300,
 	),
 
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Event Timetable Default Colours
+	|--------------------------------------------------------------------------
+	|
+	| Set the default colour (hex) for events that either don't have a type or
+	| types that don't have a colour. 
+	|
+	*/
+	'defaultEventColour' => '#0f6c00',
+
 );

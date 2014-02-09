@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('Zeropingheroes\LanagerCore\Seeds\RolesTableSeeder');
 		$this->call('Zeropingheroes\LanagerCore\Seeds\InfoPageTableSeeder');
+		$this->call('Zeropingheroes\LanagerCore\Seeds\EventTypesTableSeeder');
 	}
 
 }

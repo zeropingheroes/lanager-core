@@ -63,6 +63,14 @@ Route::get(
 		'uses' => 'Zeropingheroes\LanagerCore\StateController@currentServerUsage')
 );
 
+// Events
+Route::get('event/timetable', 
+	array('as' => 'event.timetable',
+		'uses' => 'Zeropingheroes\LanagerCore\EventController@timetable')
+);
+Route::resource('event', 'Zeropingheroes\LanagerCore\EventController');
+
+
 // Default
 Route::get('/', array('before' => 'installed', function()
 {

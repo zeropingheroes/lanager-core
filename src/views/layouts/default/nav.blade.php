@@ -34,6 +34,9 @@
 				<li class="{{ Request::is('shout*') ? 'active' : '' }}">
 					{{ link_to_route('shout.index', 'Shouts') }}
 				</li>
+				<li class="{{ Request::is('event*') ? 'active' : '' }}">
+					{{ link_to_route('event.timetable', 'Events') }}
+				</li>
 				<li class="{{ Request::is('user*') ? 'active' : '' }}">
 					{{ link_to_route('user.index', 'People') }}
 				</li>

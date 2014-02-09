@@ -219,3 +219,37 @@ table.states-current-usage td.column-user-count {
 	font-weight: bold;
 	padding: 0px 30px;
 }
+
+/* -------------------------------------------------------------------
+   EVENTS - TIMETABLE
+   -------------------------------------------------------------------
+*/
+/* move timetable up */
+div#timetable {
+	margin-top: -42px;
+}
+/* remove timetable background */ 
+.fc-state-highlight {
+	background-color: transparent;
+}
+/* subtle borders*/ 
+.fc-widget-header,
+.fc-widget-content {
+	border: 1px solid #444;
+}
+/* hide event overlay */ 
+.fc-event-bg {
+	display: none;
+}
+
+/* render timeline */
+.timeline {
+    position: absolute;
+    left: 50px;
+    border: none;
+    border-top: 2px solid #2919FF;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+}
