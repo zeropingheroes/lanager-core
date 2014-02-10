@@ -30,5 +30,5 @@
 </script>
 
 <div id="timetable"></div>
-
+Having trouble viewing the timetable? Try the {{ link_to_route('event.index', 'Events List') }}
 @endsection

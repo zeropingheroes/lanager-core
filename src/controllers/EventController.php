@@ -40,4 +40,18 @@ class EventController extends BaseController {
 					->with('title','Events Timetable');
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		$events = Event::orderBy('start')->get();
+		
+		return View::make('lanager-core::event.index')
+					->with('title','Events List')
+					->with('events',$events);
+	}
+
 }
