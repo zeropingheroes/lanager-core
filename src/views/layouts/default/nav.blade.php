@@ -34,8 +34,23 @@
 				<li class="{{ Request::is('shout*') ? 'active' : '' }}">
 					{{ link_to_route('shout.index', 'Shouts') }}
 				</li>
-				<li class="{{ Request::is('event*') ? 'active' : '' }}">
-					{{ link_to_route('event.timetable', 'Events') }}
+				<li class="dropdown {{ Request::is('event*') ? 'active' : '' }}">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Events
+						<b class="caret"></b>
+					</a> 
+					<ul class="dropdown-menu">
+						<li>
+							{{ link_to_route('event.timetable', 'Timetable') }}
+						</li>
+						<li>
+							{{ link_to_route('event.index', 'List') }}
+						</li>
+						@if( Authority::can( 'manage', 'event' ) )
+							<li>
+								{{ link_to_route('event.create', 'Create...') }}
+							</li>
+						@endif
+					</ul>
 				</li>
 				<li class="{{ Request::is('user*') ? 'active' : '' }}">
 					{{ link_to_route('user.index', 'People') }}

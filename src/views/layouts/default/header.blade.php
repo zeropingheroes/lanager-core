@@ -12,6 +12,7 @@
 		
 		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/twitter/bootstrap/css/bootstrap-dark.min.css') }}
 		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/fullcalendar/fullcalendar.css') }}
+		{{ HTML::style('packages/zeropingheroes/lanager-core/vendor/eonasdan/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') }}
 		{{ HTML::style('packages/zeropingheroes/lanager-core/css/lanager.css') }}
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,6 +27,9 @@
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/rails/jquery-ujs/rails.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/fullcalendar/fullcalendar.min.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/fullcalendar/timeline.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/moment/moment.min.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/eonasdan/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/eonasdan/bootstrap-datetimepicker/bootstrap-datetimepicker.en-gb.js') }}
 
 		<script type="text/javascript">
 			var siteUrl = '{{ url('/') }}';

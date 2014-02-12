@@ -39,6 +39,11 @@ return array(
 				$authority->allow('manage', 'shout');
 			}
 
+			if( $self->hasRole('EventAdmin') ) 
+			{
+				$authority->allow('manage', 'event');
+			}
+
 			// Must be at bottom
 			if( $self->hasRole('SuperAdmin') ) 
 			{

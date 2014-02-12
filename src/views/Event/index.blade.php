@@ -13,7 +13,7 @@
 				'start-time'	=> date('g:ia', strtotime($event->start)),
 				'end-day'		=> date('D jS', strtotime($event->end)),
 				'end-time'		=> date('g:ia', strtotime($event->end)),
-				'type'			=> $event->event_type->name,
+				'type'			=> (isset($event->event_type->name) ? $event->event_type->name : ''),
 			);
 		}
 		?>

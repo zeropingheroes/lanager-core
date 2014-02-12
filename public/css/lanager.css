@@ -253,3 +253,21 @@ div#timetable {
     padding: 0;
     z-index: 999;
 }
+
+/* -------------------------------------------------------------------
+   DATE PICKER
+   -------------------------------------------------------------------
+*/
+/* dark green date/time hover */ 
+.bootstrap-datetimepicker-widget td.day:hover,
+.bootstrap-datetimepicker-widget td.hour:hover,
+.bootstrap-datetimepicker-widget td.minute:hover,
+.bootstrap-datetimepicker-widget td span:hover,
+.bootstrap-datetimepicker-widget thead tr:first-child th:hover {
+	background: #19A601;
+}
+/* light green date/time selected */ 
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td span.active {
+	background: #2AE208;
+}
