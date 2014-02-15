@@ -107,4 +107,56 @@ class EventController extends BaseController {
 					->with('event',$event);
 	}
 
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		$event = Event::find($id);
+		$eventTypes = array('' => ' ') + EventType::lists('name','id');
+
+		return View::make('lanager-core::event.edit')
+					->with('title','Edit Event')
+					->with('eventTypes',$eventTypes)
+					->with('event',$event);
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		$event = Event::find($id);
+		$event->name 			= Input::get('name');
+		$event->description		= Input::get('description');
+		$event->start 			= Input::get('start');
+		$event->end 			= Input::get('end');
+		$event->event_type_id	= (is_numeric(Input::get('event_type_id')) ? Input::get('event_type_id') : NULL); // turn non-numeric & empty values into NULL
+		
+		if(!$event->save())
+		{
+			return Redirect::route('event.edit',array('event' => $event->id))->withErrors($event->errors());
+		}
+
+		return Redirect::route('event.show',array('event' => $event->id));
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		Event::destroy($id);
+		return Redirect::route('event.index');
+	}
+
 }

@@ -9,12 +9,12 @@
 <div class="row">
 	<div class="col-md-6">
 		{{ Form::label('start', 'Start') }}
-		{{ Form::text('start', '', array('placeholder' => 'DD/MM/YYYY HH:MM')) }}
+		{{ Form::text('start', NULL, array('placeholder' => 'DD/MM/YYYY HH:MM')) }}
 		{{ HTML::datePicker('start', array('linkedPickerName' => 'end')) }}
 	</div>
 	<div class="col-md-6">
 		{{ Form::label('end', 'End') }}
-		{{ Form::text('end', '', array('placeholder' => 'DD/MM/YYYY HH:MM')) }}
+		{{ Form::text('end', NULL, array('placeholder' => 'DD/MM/YYYY HH:MM')) }}
 		{{ HTML::datePicker('end') }}
 	</div>
 </div>
