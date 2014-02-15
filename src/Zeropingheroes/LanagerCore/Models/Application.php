@@ -1,7 +1,7 @@
 <?php
 namespace Zeropingheroes\LanagerCore\Models;
 
-use Tsukanov\SteamLocomotive\LocomotiveTools;
+use Tsukanov\SteamLocomotive\Core\Tools\Store;
 
 class Application extends BaseModel {
 
@@ -19,8 +19,8 @@ class Application extends BaseModel {
 	{
 		if( ! empty($this->steam_app_id) )
 		{
-			$locomotive = new LocomotiveTools();
-			return $locomotive->store->getAppLogoURL($this->steam_app_id, $size);			
+			$locomotive = new Store();
+			return $locomotive->getAppLogoURL($this->steam_app_id, $size);			
 		}
 		else
 		{
