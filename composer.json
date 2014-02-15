@@ -27,12 +27,12 @@
            "src/seeds",
            "src/controllers",
            "src/commands",
-           "src/validators"
+           "src/validators",
+           "src/helpers"
        ],
        "psr-0": {
            "Zeropingheroes\\LanagerCore\\": "src/"
        }
    },
    "minimum-stability": "dev"
-
 }

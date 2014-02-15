@@ -21,12 +21,11 @@ a:hover {
 	color: #2AE208;
 }
 
-/* dark hr with small margin */
+/* dark hr with no margin */
 hr {
 	border-color: #333;
-	border-top: none;
-	margin-top: 25px;
-	margin-bottom: 5px;
+	border-top: 1px solid #333;
+	margin: 0;
 }
 
 /* dark table borders */
@@ -61,6 +60,10 @@ img.avatar.online {
 }
 img.avatar.offline {
 	border-color: #333;
+}
+
+div.content {
+	margin-bottom: 10px;
 }
 
 /* footer separated from content */
@@ -182,6 +185,7 @@ div.user-profile-content ul {
    SHOUT - INDEX
    -------------------------------------------------------------------
 */
+
 /* wide form separated from posts */
 form.shout-create {
 	width: 100%;
@@ -224,6 +228,7 @@ table.states-current-usage td.column-user-count {
    EVENTS - TIMETABLE
    -------------------------------------------------------------------
 */
+
 /* move timetable up */
 div#timetable {
 	margin-top: -42px;
@@ -255,10 +260,11 @@ div#timetable {
 }
 
 /* -------------------------------------------------------------------
-   DATE PICKER
+   EVENTS - CREATE
    -------------------------------------------------------------------
 */
-/* dark green date/time hover */ 
+
+/* dark green hover */ 
 .bootstrap-datetimepicker-widget td.day:hover,
 .bootstrap-datetimepicker-widget td.hour:hover,
 .bootstrap-datetimepicker-widget td.minute:hover,
@@ -266,8 +272,18 @@ div#timetable {
 .bootstrap-datetimepicker-widget thead tr:first-child th:hover {
 	background: #19A601;
 }
-/* light green date/time selected */ 
+/* light green selected */ 
 .bootstrap-datetimepicker-widget td.active,
 .bootstrap-datetimepicker-widget td span.active {
 	background: #2AE208;
+}
+
+/* -------------------------------------------------------------------
+   EVENTS - VIEW
+   -------------------------------------------------------------------
+*/
+
+div.event-relative-status {
+	text-align: right;
+	margin-top: -28px;
 }

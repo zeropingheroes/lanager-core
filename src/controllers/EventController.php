@@ -68,7 +68,6 @@ class EventController extends BaseController {
 					->with('title','Create Event')
 					->with('eventTypes',$eventTypes)
 					->with('event',$event);
-
 	}
 
 	/**
@@ -91,6 +90,21 @@ class EventController extends BaseController {
 		}
 
 		return Redirect::route('event.index');
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		$event = Event::find($id);
+
+		return View::make('lanager-core::event.show')
+					->with('title',$event->name)
+					->with('event',$event);
 	}
 
 }
