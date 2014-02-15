@@ -7,6 +7,7 @@ class Timespan {
 	public $start;
 	public $end;
 	public $now;
+	public $status;
 
 	public function __construct($start, $end)
 	{
@@ -19,6 +20,21 @@ class Timespan {
 		}
 
 		$this->now = new ExpressiveDate;
+
+		if( $this->start->greaterThan($this->now) )
+		{
+			$this->status = 0;
+		}
+
+		if( $this->start->lessOrEqualTo($this->now) && $this->end->greaterOrEqualTo($this->now) )
+		{
+			$this->status = 1;
+		}
+
+		if( $this->end->lessThan($this->now) )
+		{
+			$this->status = 2;
+		}
 	}
 
 	public function naturalFormat()
@@ -50,24 +66,6 @@ class Timespan {
 		}
 
 		return $this->start->format($startFormat).' to '. $this->end->format($endFormat);
-	}
-
-	public function relativeStatus()
-	{
-		if( $this->start->greaterThan($this->now) )
-		{
-			return 'Starting '.$this->start->getRelativeDate();
-		}
-
-		if( $this->start->lessOrEqualTo($this->now) && $this->end->greaterOrEqualTo($this->now) )
-		{
-			return 'Began '.$this->start->getRelativeDate().', ending '.$this->end->getRelativeDate();
-		}
-
-		if( $this->end->lessThan($this->now) )
-		{
-			return 'Ended '.$this->end->getRelativeDate();
-		}
 	}
 
 }

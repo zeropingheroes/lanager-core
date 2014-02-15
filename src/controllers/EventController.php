@@ -2,7 +2,7 @@
 
 use Zeropingheroes\LanagerCore\Models\Event,
 	Zeropingheroes\LanagerCore\Models\EventType;
-use View, Input, Redirect, Request, Response, URL;
+use View, Input, Redirect, Request, Response, URL, Auth;
 
 class EventController extends BaseController {
 
@@ -82,14 +82,16 @@ class EventController extends BaseController {
 		$event->description 	= Input::get('description');
 		$event->start 			= Input::get('start');
 		$event->end 			= Input::get('end');
+		$event->signup_opens	= (Input::get('signup_opens') != NULL ? Input::get('signup_opens') : NULL);
+		$event->signup_closes	= (Input::get('signup_closes') != NULL ? Input::get('signup_closes') : NULL);
 		$event->event_type_id 	= (is_numeric(Input::get('event_type_id')) ? Input::get('event_type_id') : NULL); // turn non-numeric & empty values into NULL
-		
+
 		if(!$event->save())
 		{
 			return Redirect::route('event.create')->withErrors($event->errors());
 		}
 
-		return Redirect::route('event.index');
+		return Redirect::route('event.show',array('event' => $event->id));
 	}
 
 	/**
@@ -137,6 +139,8 @@ class EventController extends BaseController {
 		$event->description		= Input::get('description');
 		$event->start 			= Input::get('start');
 		$event->end 			= Input::get('end');
+		$event->signup_opens	= (Input::get('signup_opens') != NULL ? Input::get('signup_opens') : NULL);
+		$event->signup_closes	= (Input::get('signup_closes') != NULL ? Input::get('signup_closes') : NULL);
 		$event->event_type_id	= (is_numeric(Input::get('event_type_id')) ? Input::get('event_type_id') : NULL); // turn non-numeric & empty values into NULL
 		
 		if(!$event->save())
@@ -158,5 +162,26 @@ class EventController extends BaseController {
 		Event::destroy($id);
 		return Redirect::route('event.index');
 	}
+
+	public function join($id)
+	{
+		$event = Event::find($id);
+		if( !$event->users->contains(Auth::user()) AND (strtotime($event->signup_closes) > time()) ) 
+		{
+			$event->users()->attach(Auth::user());
+		}
+		return Redirect::route('event.show',array('event' => $event->id));
+	}
+
+	public function leave($id)
+	{
+		$event = Event::find($id);
+		if( $event->users->contains(Auth::user()) )
+		{
+			$event->users()->detach(Auth::user());
+		}
+		return Redirect::route('event.show',array('event' => $event->id));
+	}
+
 
 }

@@ -21,6 +21,19 @@
 
 <div class="row">
 	<div class="col-md-6">
+		{{ Form::label('signup_opens', 'Signup Opens') }}
+		{{ Form::text('signup_opens', NULL, array('placeholder' => 'DD/MM/YYYY HH:MM')) }}
+		{{ HTML::datePicker('signup_opens', array('linkedPickerName' => 'signup_closes')) }}
+	</div>
+	<div class="col-md-6">
+		{{ Form::label('signup_closes', 'Signup Closes') }}
+		{{ Form::text('signup_closes', NULL, array('placeholder' => 'DD/MM/YYYY HH:MM')) }}
+		{{ HTML::datePicker('signup_closes') }}
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
 		{{ Form::label('event_type_id', 'Type') }}
 		{{ Form::select('event_type_id', $eventTypes) }}
 	</div>

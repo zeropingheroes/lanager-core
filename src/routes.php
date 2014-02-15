@@ -13,6 +13,7 @@
 
 Route::pattern('user', '[0-9]+');
 Route::pattern('shout', '[0-9]+');
+Route::pattern('event', '[0-9]+');
 
 // User
 Route::get(
@@ -46,7 +47,7 @@ Route::resource('infoPage', 'Zeropingheroes\LanagerCore\InfoPageController');
 // Shout
 Route::resource('shout', 'Zeropingheroes\LanagerCore\ShoutController');
 Route::get(
-	'shout/pin/{shout}',
+	'shout/{shout}/pin',
 	array('as' => 'shout.pin',
 		'uses' => 'Zeropingheroes\LanagerCore\ShoutController@pin')
 );
@@ -67,6 +68,16 @@ Route::get(
 Route::get('event/timetable', 
 	array('as' => 'event.timetable',
 		'uses' => 'Zeropingheroes\LanagerCore\EventController@timetable')
+);
+Route::get(
+	'event/{event}/join',
+	array('as' => 'event.join',
+		'uses' => 'Zeropingheroes\LanagerCore\EventController@join')
+);
+Route::get(
+	'event/{event}/leave',
+	array('as' => 'event.leave',
+		'uses' => 'Zeropingheroes\LanagerCore\EventController@leave')
 );
 Route::resource('event', 'Zeropingheroes\LanagerCore\EventController');
 

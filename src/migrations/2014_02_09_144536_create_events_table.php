@@ -37,7 +37,8 @@ class CreateEventsTable extends Migration {
 				->on('event_types')
 				->onUpdate('cascade')
 				->onDelete('set null');
-		});	}
+		});
+	}
 
 	/**
 	 * Reverse the migrations.

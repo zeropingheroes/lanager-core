@@ -249,14 +249,14 @@ div#timetable {
 
 /* render timeline */
 .timeline {
-    position: absolute;
-    left: 50px;
-    border: none;
-    border-top: 2px solid #2919FF;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    z-index: 999;
+	position: absolute;
+	left: 50px;
+	border: none;
+	border-top: 2px solid #2919FF;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 999;
 }
 
 /* -------------------------------------------------------------------
@@ -283,7 +283,17 @@ div#timetable {
    -------------------------------------------------------------------
 */
 
-div.event-relative-status {
+/* borderless and left aligned */
+table.signups thead tr th,
+table.signups tr td {
+	padding-left: 0;
+	border-bottom: none;
+	border-top: none;
+}
+
+/* right aligned signup time column */
+table.signups th+th,
+table.signups td.column-signup-time
+ {
 	text-align: right;
-	margin-top: -28px;
 }
