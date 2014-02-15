@@ -17,7 +17,7 @@
 				$users[] = link_to_route('user.show', $user->username, $user->id);
 			}
 
-			$rows[$i]['application'] = '<a href="'.SteamBrowserProtocol::viewAppInStore($itemInUse['application']->steam_app_id).'"><img src="'.$itemInUse['application']->getLogo().'" alt="Game Logo" title="'.$itemInUse['application']->name.'"></a>';
+			$rows[$i]['application'] = '<a href="'.SteamBrowserProtocol::viewAppInStore($itemInUse['application']->steam_app_id).'"><img src="'.$itemInUse['application']->getLogo().'" alt="Game Logo" title="'.e($itemInUse['application']->name).'"></a>';
 
 			$rows[$i]['user-count']	= count($users);
 
@@ -33,7 +33,7 @@
 				}
 			}
 
-			$rows[$i]['users'] = implode(', ', $users);
+			$rows[$i]['users'] = e(implode(', ', $users));
 
 			$i++;
 		}
