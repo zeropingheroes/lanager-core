@@ -2,8 +2,8 @@
 @section('content')
 	<h2>{{{ $title }}}</h2>
 	@if(count($events))
-		{{ Table::open() }}
-		{{ Table::headers('Name', 'Time', 'Type', 'Signups') }}
+		{{ Table::open(array('class' => 'events-list')) }}
+		{{ Table::headers('Name', 'Time', '', 'Type', 'Signups', '') }}
 		<?php
 		foreach( $events as $event )
 		{
@@ -23,17 +23,21 @@
 						$signupTimespan->status = Label::warning('Closed');
 						break;
 				}
-				$signups = $signupTimespan->status.' '.count($event->users).' '.str_plural('user',count($event->users)).' signed up';
+				$signupStatus = $signupTimespan->status;
+				$signupCount = count($event->users).' '.str_plural('user',count($event->users));
 			}
 			else
 			{
-				$signups = '';
+				$signupStatus = '';
+				$signupCount = '';
 			}
 			$tableBody[] = array(
 				'name'			=> link_to_route('event.show', $event->name, $event->id),
 				'time'			=> $eventTimespan->naturalFormat(),
+				'status'		=> ($eventTimespan->status == 1 ? Label::success('In Progress') : ''),
 				'type'			=> (isset($event->event_type->name) ? $event->event_type->name : ''),
-				'signups'		=> $signups,
+				'signup-count'	=> $signupCount,
+				'signup-status'	=> $signupStatus,
 			);
 		}
 		?>
