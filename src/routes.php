@@ -14,6 +14,7 @@
 Route::pattern('user', '[0-9]+');
 Route::pattern('shout', '[0-9]+');
 Route::pattern('event', '[0-9]+');
+Route::pattern('playlist', '[0-9]+');
 
 // User
 Route::get(
@@ -80,6 +81,21 @@ Route::get(
 		'uses' => 'Zeropingheroes\LanagerCore\EventController@leave')
 );
 Route::resource('event', 'Zeropingheroes\LanagerCore\EventController');
+
+// Playlist
+Route::get(
+	'playlist/{playlist}/item/current',
+	array('as' => 'playlist.item.current',
+		'uses' => 'Zeropingheroes\LanagerCore\PlaylistItemController@current')
+);
+Route::get(
+	'playlist/{playlist}/item/{playlistItem}/pause',
+	array('as' => 'playlist.item.pause',
+		'uses' => 'Zeropingheroes\LanagerCore\PlaylistItemController@pause')
+);
+Route::resource('playlist', 'Zeropingheroes\LanagerCore\PlaylistController');
+Route::resource('playlist.item', 'Zeropingheroes\LanagerCore\PlaylistItemController');
+
 
 
 // Default

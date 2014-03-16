@@ -8,7 +8,6 @@ body {
 	background-color: #000000;
 	color: #fff;
 	background-image: url('../img/bg-html.jpg');
-	padding-bottom: 40px;
 }
 
 /* green links */
@@ -70,6 +69,13 @@ div.content {
 footer {
 	border-top: 1px solid #333;
 	padding-top: 5px;
+	padding-bottom: 40px;
+}
+
+div.fullscreen {
+	margin-left: 0px;
+	margin-right: 0px;
+	max-width: none;
 }
 
 /* -------------------------------------------------------------------
@@ -305,4 +311,28 @@ table.signups th+th,
 table.signups td.column-signup-time
  {
 	text-align: right;
+}
+
+/* -------------------------------------------------------------------
+   PLAYLIST ITEMS - INDEX
+   -------------------------------------------------------------------
+*/
+form.playlist-item-create {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+form.playlist-item-create input {
+	width: 1065px;
+}
+
+/* -------------------------------------------------------------------
+   PLAYLIST ITEMS - INDEX
+   -------------------------------------------------------------------
+*/
+div#now-playing, div#submitter {
+	font-size: 150%;
+}
+div#submitter img {
+	padding-left: 5px;
 }

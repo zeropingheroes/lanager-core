@@ -6,6 +6,3 @@
 	{{ Button::inverse_submit('Post') }}
 	{{ Form::close() }}
 @endif
-
-@if(false)
-@endif

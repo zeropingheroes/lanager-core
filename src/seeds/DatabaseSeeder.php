@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('Zeropingheroes\LanagerCore\Seeds\RolesTableSeeder');
-		$this->call('Zeropingheroes\LanagerCore\Seeds\InfoPageTableSeeder');
+		$this->call('Zeropingheroes\LanagerCore\Seeds\InfoPagesTableSeeder');
 		$this->call('Zeropingheroes\LanagerCore\Seeds\EventTypesTableSeeder');
+		$this->call('Zeropingheroes\LanagerCore\Seeds\PlaylistsTableSeeder');
 	}
 
 }

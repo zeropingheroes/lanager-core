@@ -30,6 +30,7 @@
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/moment/moment.min.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/eonasdan/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}
 		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/eonasdan/bootstrap-datetimepicker/bootstrap-datetimepicker.en-gb.js') }}
+		{{ HTML::script('packages/zeropingheroes/lanager-core/vendor/google/swfobject.js') }}
 
 		<script type="text/javascript">
 			var siteUrl = '{{ url('/') }}';

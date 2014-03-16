@@ -92,6 +92,11 @@ class User extends BaseModel implements UserInterface
 		return $this->hasMany('Zeropingheroes\LanagerCore\Models\Shout');
 	}
 
+	public function playlistItems()
+	{
+		return $this->hasMany('Zeropingheroes\LanagerCore\Models\PlaylistItem');
+	}
+
 	public function events()
 	{
 		return $this->belongsToMany('Zeropingheroes\LanagerCore\Models\Event', 'event_signups')->withTimestamps();

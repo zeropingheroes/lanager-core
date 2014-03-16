@@ -4,7 +4,7 @@ use \Illuminate\Database\Seeder,
 	\Illuminate\Support\Facades\DB,
 	Zeropingheroes\LanagerCore\Models\InfoPage;
 
-class InfoPageTableSeeder extends Seeder {
+class InfoPagesTableSeeder extends Seeder {
 
 	public function run()
 	{

@@ -94,4 +94,21 @@ return array(
 	*/
 	'defaultEventColour' => '#0f6c00',
 
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Playlist
+	|--------------------------------------------------------------------------
+	|
+	| Set the dimensions
+	| types that don't have a colour. 
+	|
+	*/
+	'playlistVideoPlayer' => array(
+		'width' => 1410,
+		'height' => 850,
+		'quality' => 'highres', // small, medium, large, hd720, hd1080, highres or default (see http://bit.ly/1isMjD9 )
+	),
+
 );

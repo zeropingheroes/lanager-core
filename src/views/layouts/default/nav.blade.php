@@ -61,6 +61,9 @@
 				<li class="{{ Request::is('statistics/servers/current-usage*') ? 'active' : '' }}">
 					{{ link_to_route('statistics.servers.current-usage', 'Servers') }}
 				</li>
+				<li class="{{ Request::is('playlist*') ? 'active' : '' }}">
+					{{ link_to_route('playlist.item.index', 'Playlist', 1) }}
+				</li>
 				@include('lanager-core::layouts.default.info')
 				@include('lanager-core::layouts.default.links')
 			</ul>
