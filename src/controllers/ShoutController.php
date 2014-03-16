@@ -50,7 +50,6 @@ class ShoutController extends BaseController {
 
 		if( ! $shout->save() )
 		{
-			//dd($shout->validationErrors);
 			return Redirect::route('shout.index')->withErrors($shout->validationErrors);
 		}
 		else
